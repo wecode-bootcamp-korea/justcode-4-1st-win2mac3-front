@@ -1,22 +1,25 @@
-// font-size
-$h1: 34px;
-$h2: 28px;
-$h3: 26px;
-$h4: 22px;
-$h5: 18px;
-$h6: 16px;
-$p: 16px;
-$small: 14px;
+/*font-size*/
+$h1:34px;
+$h2:28px;
+$h3:26px;
+$h4:22px;
+$h5:18px;
+$h6:16px;
+$default:16px;
+$small:14px;
+$originPrice:20px;
+/*color*/
+$black:#161616;
+$darkGray:#8c8c8c;
+$lightGray:#c5c5c5;
+$pointColor:#d32a70;
+$brandColor:#003327;
+$alert-red:#ff0000;
+$white:#fff;
+/*font-weight*/
+$bold:700;
+$medium:500;
+$light:300;
 
-//color
-$black: #161616;
-$grey-dark: #8c8c8c;
-$grey-light: #c5c5c5;
-$pink: #d32a70;
-$green: #003327;
-$red: #ff0000;
-$white: #ffffff;
 
-//padding:
-$padding: 20px;
-//calc($padding * 2)
+
