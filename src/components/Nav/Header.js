@@ -32,4 +32,4 @@ const Header = () => {
     </div>
   );
 };
-export default Header;
+export { Header };
