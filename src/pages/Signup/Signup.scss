@@ -1,2 +1,181 @@
-@use "../../styles/common.scss";
-@import "../../styles/variables.scss";
+@use '../../styles/common.scss';
+@import '../../styles/variables.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: skyblue;
+}
+
+.guide {
+  opacity: 0.4;
+  font-size: 12px;
+}
+
+.dot {
+  color: #f00;
+  margin: 0px 3px;
+}
+
+.sign-up {
+  max-width: 1300px;
+  width: 100%;
+  margin: 50px auto;
+}
+.form {
+  background-color: white;
+  max-width: 1000px;
+  width: 100%;
+  margin: 50px auto;
+}
+
+.form-main {
+  margin: 80px 0px;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 28px;
+}
+
+.sub-title {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid black;
+}
+
+.sub-title span:first-child {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.sub-title span:last-child {
+  font-size: 12px;
+}
+
+.input-field {
+  display: flex;
+  align-items: center;
+  margin: 12px 0;
+}
+
+.input-field .label {
+  width: 100px;
+  margin-right: 20px;
+  font-size: 12px;
+}
+
+.input-field input {
+  padding: 12px 0;
+  width: 320px;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.input-field #id,
+#password {
+  margin-right: 10px;
+}
+
+.input-field .num {
+  width: 120px;
+}
+
+.input-field .condition-red {
+  color: #f00;
+  font-size: 12px;
+}
+
+.input-field .condition-grey {
+  opacity: 0.4;
+  font-size: 12px;
+}
+
+.address {
+  display: flex;
+  flex-direction: column;
+}
+
+.address .search {
+  margin-bottom: 15px;
+}
+
+.address .search button {
+  padding: 10px 28px;
+  margin-left: 12px;
+  border-radius: 3px;
+  border: 1px solid;
+  background-color: white;
+}
+
+.address input:nth-child(2),
+.address input:nth-child(3) {
+  margin-bottom: 15px;
+  width: 445px;
+}
+
+.address input:last-child {
+  margin-bottom: 0;
+}
+
+#number,
+#mobile {
+  padding: 10px 35px;
+}
+
+.mobile-wrap .num {
+  margin: 0;
+}
+
+.dash {
+  margin: 0px 20px;
+}
+
+.radio-wrap {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.radio-wrap .radio {
+  margin: 0px 5px;
+  width: 18px;
+  height: 18px;
+}
+
+.guidance {
+  font-size: 12px;
+  opacity: 0.4;
+}
+
+.dob-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.clause-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid red;
+}
+
+.clause-wrap .input {
+  width: 20px;
+  margin-right: 10px;
+}
+
+.submit {
+  display: flex;
+  justify-content: center;
+}
+.submit button {
+  padding: 40px 100px;
+}
