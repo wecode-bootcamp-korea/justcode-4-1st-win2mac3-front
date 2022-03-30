@@ -1,14 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Footer.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome;';
-import { faBlog } from '@fortawesome/free-solid-svg-icons';
-import {
-  faInstagram,
-  faInstagramSquare,
-  faFacebook,
-  faYoutube,
-} from '@fortawesome/free-brands-svg-icons';
 
 function Footer() {
   return (
@@ -33,19 +25,29 @@ function Footer() {
         </li>
         <li className="icon-list">
           <ol>
-            <FontAwesomeIcon icon={faInstagram} /> 아이콘
+            <Link to="">
+              <i class="fa-brands fa-instagram" />
+            </Link>
           </ol>
           <ol>
-            <FontAwesomeIcon icon={faInstagramSquare} /> 아이콘
+            <Link to="">
+              <i class="fa-brands fa-instagram-square" />
+            </Link>
           </ol>
           <ol>
-            <FontAwesomeIcon icon={faFacebook} /> 아이콘
+            <Link to="">
+              <i class="fa-brands fa-facebook" />
+            </Link>
           </ol>
           <ol>
-            <FontAwesomeIcon icon={faBlog} /> 아이콘
+            <Link to="">
+              <i class="fa-solid fa-blog" />
+            </Link>
           </ol>
           <ol>
-            <FontAwesomeIcon icon={faYoutube} /> 아이콘
+            <Link to="">
+              <i class="fa-brands fa-youtube" />
+            </Link>
           </ol>
         </li>
       </div>
@@ -168,7 +170,7 @@ function Footer() {
             </li>
             <li className="text">
               &nbsp;
-              <Link to="">서비스 가입사실 확인 ></Link>
+              <Link to="">서비스 가입사실 확인 &#62;</Link>
             </li>
           </ul>
         </div>
