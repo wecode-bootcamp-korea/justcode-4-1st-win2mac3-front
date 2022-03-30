@@ -1,2 +1,77 @@
-@use "../../styles/common.scss";
-@import "../../styles/variables.scss";
+@use '../../styles/common.scss';
+@import '../../styles/variables.scss';
+
+.nav {
+  .nav-depth1 {
+    .menu-bar {
+      font-size: $h2;
+    }
+    li {
+      display: inline-block;
+      margin: 0 20px;
+      font-size: $h5;
+
+      &:first-child {
+        margin-left: 0;
+        cursor: pointer;
+      }
+      &.nav-category {
+        svg {
+          transform: translateY(5px);
+        }
+        span {
+          margin: 0 0 0 10px;
+        }
+      }
+    }
+  }
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 0;
+  .header-logo {
+    width: 252px;
+    height: 38px;
+    a {
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+.user-service {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-basis: 20%;
+  li {
+    position: relative;
+    &.user-cart,
+    &.user-cart + li {
+      &:after {
+        display: none;
+      }
+    }
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 1px;
+      height: 10px;
+      top: 3px;
+      left: -10px;
+      background: $darkGray;
+    }
+    a {
+      text-decoration: none;
+      color: $darkGray;
+    }
+    &.user-cart {
+      a {
+        font-size: $h3;
+        color: $black;
+      }
+    }
+  }
+}
