@@ -8,7 +8,10 @@ import { NavDepth2 } from './NavDepth2.js';
 import './Nav.scss';
 
 const Nav = () => {
-  let [click, setClick] = useState(false);
+  let [clicked, setClicked] = useState(false);
+  function handleCategory(e) {
+    !clicked ? setClicked(true) : setClicked(false);
+  }
 
   return (
     <nav className="nav-wrap">
@@ -16,7 +19,7 @@ const Nav = () => {
         <Header />
         <div className="nav">
           <ul className="nav-depth1">
-            <li className="nav-category" onClick={e => setClick(true)}>
+            <li className="nav-category" onClick={handleCategory}>
               <FontAwesomeIcon icon={faBars} className="menu-bar" />
               <span>제품카테고리</span>
             </li>
@@ -44,7 +47,7 @@ const Nav = () => {
           </div>
         </div>
       </div>
-      <NavDepth2 className={!click ? '' : 'nav-disable'} />
+      <NavDepth2 show={clicked} />
     </nav>
   );
 };

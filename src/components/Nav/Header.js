@@ -27,7 +27,8 @@ const Header = () => {
         </li>
         <li>
           <Link to="#">
-            고객센터 <FontAwesomeIcon icon={faCaretDown} />
+            고객센터 &nbsp;&nbsp;
+            <FontAwesomeIcon icon={faCaretDown} />
           </Link>
         </li>
       </ul>

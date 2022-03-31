@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "categoryName": "best",
+    "pageUrl": "/best"
+  },
+  {
+    "id": 2,
+    "categoryName": "new",
+    "pageUrl": "/new"
+  },
+  {
+    "id": 3,
+    "categoryName": "데코뷰 스타일링",
+    "pageUrl": "/best"
+  },
+  {
+    "id": 4,
+    "categoryName": "매장안내",
+    "pageUrl": "/best"
+  }
+]
