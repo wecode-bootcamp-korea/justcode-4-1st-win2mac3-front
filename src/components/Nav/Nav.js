@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import { Header } from './Header.js';
-import { SearchBar } from './SearchBar';
+import { SearchBar } from './SearchBar.js';
 import './Nav.scss';
 
 const Nav = () => {
