@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-import './List.scss';
 
-const Card = data => {
+const Card = list => {
+  console.log(list);
   return (
     <div className="card-wrap">
       <div className="card-img-wrap">
@@ -16,18 +15,18 @@ const Card = data => {
           <button className="card-btn heart" type="button">
             <FontAwesomeIcon icon={faHeart} />
           </button>
-          <Link className="card-img" to={productUrl}>
-            <img src={productInfo.image_url} alt={productInfo.name} />
+          <Link className="card-img" to="#">
+            <img src={list.image_url} alt={list.name} />
           </Link>
         </div>
       </div>
-      <Link className="card-name" to={productUrl}>
-        {productInfo.name}
+      <Link className="card-name" to="#">
+        {list.name}
       </Link>
       <p className="card-price">
         <span>
-          <b className="price-after">{productInfo.price_after}</b>
-          <em className="price-before">{productInfo.price_before}</em>
+          <b className="price-after">{list.price_after}</b>
+          <em className="price-before">{list.price_before}</em>
         </span>
 
         <span className="price-discount">32%</span>
