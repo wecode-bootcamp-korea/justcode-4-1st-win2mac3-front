@@ -1,34 +1,36 @@
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import './List.scss';
 
-const Card = () => {
+const Card = data => {
   return (
     <div className="card-wrap">
       <div className="card-img-wrap">
         <div className="card-img-cover">
-          <button className="card-btn" type="button">
-            <i class="fa-regular fa-cart-shopping" />
+          <button className="card-btn cart" type="button">
+            <FontAwesomeIcon icon={faShoppingCart} />
           </button>
-          <button className="card-btn" type="button">
+          <button className="card-btn heart" type="button">
             <FontAwesomeIcon icon={faHeart} />
           </button>
+          <Link className="card-img" to={productUrl}>
+            <img src={productInfo.image_url} alt={productInfo.name} />
+          </Link>
         </div>
-        <Link className="card-img">
-          <img
-            src="https://images.pexels.com/photos/1421176/pexels-photo-1421176.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
-            alt="product1"
-          />
-        </Link>
       </div>
-      <span className="card-name">미스티블루 드로잉 주방매트</span>
+      <Link className="card-name" to={productUrl}>
+        {productInfo.name}
+      </Link>
       <p className="card-price">
-        <dl>
-          <dt>53,000</dt>
-          <dd>40,000</dd>
-        </dl>
-        <span>32%</span>
+        <span>
+          <b className="price-after">{productInfo.price_after}</b>
+          <em className="price-before">{productInfo.price_before}</em>
+        </span>
+
+        <span className="price-discount">32%</span>
       </p>
     </div>
   );
