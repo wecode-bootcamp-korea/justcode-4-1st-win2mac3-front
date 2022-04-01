@@ -1,84 +1,219 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Detail.scss';
+import OrderSummary from './OrderSummary';
 
 function Detail() {
+  const [productInfo, setProductInfo] = useState({});
+  const [productColor, setProductColor] = useState([{}]);
+  const [productSize, setProductSize] = useState([{}]);
+  const [productComposition, setProductComposition] = useState([{}]);
+
+  useEffect(() => {
+    fetch('./data/product_detail.json')
+      .then(res => res.json())
+      .then(res => setProductInfo(res));
+  }, []);
+
+  let priceAfter = Number(productInfo.price_after).toLocaleString() + '원';
+  let priceBefore = Number(productInfo.price_before).toLocaleString() + '원';
+  let discountRate =
+    Math.round((1 - productInfo.price_after / productInfo.price_before) * 100) +
+    '%';
+
+  useEffect(() => {
+    fetch('./data/colors_table.json')
+      .then(res => res.json())
+      .then(res => setProductColor(res));
+  }, []);
+
+  useEffect(() => {
+    fetch('./data/sizes_table.json')
+      .then(res => res.json())
+      .then(res => setProductSize(res));
+  }, []);
+
+  useEffect(() => {
+    fetch('./data/compositions_table.json')
+      .then(res => res.json())
+      .then(res => setProductComposition(res));
+  }, []);
+
+  const [currentColor, setCurrentColor] = useState('none');
+  const [currentSize, setCurrentSize] = useState('none');
+  const [currentComposition, setCurrentComposition] = useState('none');
+  const [orderSummary, setOrderSummary] = useState(false);
+  const [orderInfo, setOrderInfo] = useState({
+    orderList: [{ id: 0, price: 0, quantity: 0 }],
+  });
+  const [totalPrice, setTotalPrice] = useState('');
+  const [totalQuantity, setTotalQuantity] = useState('');
+
+  const pickColor = e => {
+    setCurrentColor(productColor.filter(obj => obj.value === e.target.value));
+  };
+
+  const pickSize = e => {
+    setCurrentSize(productSize.filter(obj => obj.value === e.target.value));
+  };
+
+  const pickComposition = e => {
+    setCurrentComposition(
+      productComposition.filter(obj => obj.value === e.target.value)
+    );
+  };
+
+  useEffect(() => {
+    currentColor[0].value !== undefined &&
+    currentSize[0].value !== undefined &&
+    currentComposition[0].value !== undefined &&
+    currentColor[0].value !== 'none' &&
+    currentSize[0].value !== 'none' &&
+    currentComposition[0].value !== 'none'
+      ? setOrderSummary(true)
+      : setOrderSummary(false);
+  }, [currentColor, currentSize, currentComposition]);
+
+  useEffect(() => {
+    if (orderSummary) {
+      orderInfo.orderList.push({
+        id: orderInfo.orderList[orderInfo.orderList.length - 1].id + 1,
+        product_id: productInfo.id,
+        product_name: productInfo.name,
+        color_id: currentColor[0].id,
+        color_name: currentColor[0].name,
+        size_id: currentSize[0].id,
+        size_name: currentSize[0].name,
+        composition_id: currentComposition[0].id,
+        composition_name: currentComposition[0].name,
+        price:
+          productInfo.price_after +
+          currentSize[0].price_add +
+          currentComposition[0].price_add,
+        quantity: 1,
+      });
+      setOrderInfo({
+        orderList: orderInfo.orderList,
+      });
+    }
+    setTotalPrice(
+      Number(
+        orderInfo.orderList
+          .map(order => order.price * order.quantity)
+          .reduce(function (prev, curr) {
+            return prev + curr;
+          }, 0)
+      ).toLocaleString() + '원'
+    );
+    setTotalQuantity(
+      Number(
+        orderInfo.orderList
+          .map(order => order.quantity)
+          .reduce(function (prev, curr) {
+            return prev + curr;
+          }, 0)
+      ).toLocaleString() + '개'
+    );
+  }, [
+    currentColor,
+    currentComposition,
+    currentSize,
+    orderInfo.orderList,
+    orderSummary,
+    productComposition,
+    productInfo.id,
+    productInfo.name,
+    productInfo.price_after,
+  ]);
+
+  console.log(orderInfo.orderList);
+  console.log(totalPrice);
+
   return (
     <div className="body">
       <div className="detailWrapper">
-        <div className="homeToWhere">홈 &#62; &#35;먼지제로프로젝트</div>
+        <div className="homeToWhere">
+          홈 &#62; {productInfo.one_sub_category} &#62;{' '}
+          {productInfo.two_sub_category}
+        </div>
         <div className="detailContainer">
           <div className="imageSection">
-            <img src="./images/product/product01.jpg" alt="" />
+            <img src={productInfo.image_url} alt="" />
           </div>
           <div className="wordSection">
             <div className="itemName">
-              <h2>드리밍 고밀도 60수 바이오워싱 차렵이불</h2>
+              <h2>{productInfo.name}</h2>
               <span className="recommendIcon">주문폭주</span>
             </div>
             <div className="priceSection">
               <div>
-                <span className="afterDiscount">79,900원</span>
-                <span className="beforeDiscount">115,000원</span>
+                <span className="afterDiscount">{priceAfter}</span>
+                <span className="beforeDiscount">{priceBefore}</span>
               </div>
-              <span className="discountRate">31%</span>
+              <span className="discountRate">{discountRate}</span>
             </div>
             <div className="itemOption">
               <table>
                 <tr>
                   <td className="firstColumn itemDescription">상품설명</td>
-                  <td className="itemDescription">
-                    주문폭주로 인해 &#91;바이올렛 SS 이불/이불세트, 옐로우 SS
-                    이불세트&#93; 구매시 4/1부터 순차적으로 배송됩니다.
-                  </td>
+                  <td className="itemDescription">{productInfo.description}</td>
                 </tr>
                 <tr>
                   <td className="firstColumn">색상</td>
                   <td>
-                    <select name="itemColor">
+                    <select name="itemColor" onChange={pickColor}>
                       <option value="none">
                         - &#91;필수&#93; 옵션을 선택해 주세요 -
                       </option>
-                      <option value="yellow">옐로우</option>
-                      <option value="white">화이트</option>
-                      <option value="blue">블루</option>
-                      <option value="pink">핑크</option>
-                      <option value="violet">바이올렛</option>
+                      {productColor.map(color => (
+                        <option key={color.value} value={color.value}>
+                          {color.name}
+                        </option>
+                      ))}
                     </select>
                   </td>
                 </tr>
                 <tr>
                   <td className="firstColumn">사이즈</td>
                   <td>
-                    <select name="itemSize">
+                    <select name="itemSize" onChange={pickSize}>
                       <option value="none">
                         - &#91;필수&#93; 옵션을 선택해 주세요 -
                       </option>
-                      <option value="supersingle">SS</option>
-                      <option value="queen">Q</option>
+                      {productSize.map(size => (
+                        <option key={size.value} value={size.value}>
+                          {size.name}
+                        </option>
+                      ))}
                     </select>
                   </td>
                 </tr>
                 <tr>
                   <td className="firstColumn">구성</td>
                   <td>
-                    <select name="itemCompo">
+                    <select name="itemComposition" onChange={pickComposition}>
                       <option value="none">
                         - &#91;필수&#93; 옵션을 선택해 주세요 -
                       </option>
-                      <option value="set1">set 1</option>
-                      <option value="set2">set 2</option>
-                      <option value="set3">set 3</option>
-                      <option value="set4">set 4</option>
-                      <option value="set5">set 5</option>
+                      {productComposition.map(composition => (
+                        <option
+                          key={composition.value}
+                          value={composition.value}
+                        >
+                          {composition.name}
+                        </option>
+                      ))}
                     </select>
                   </td>
                 </tr>
               </table>
             </div>
+            {orderInfo.orderList.map(order => (
+              <OrderSummary key={order.id} order={order} />
+            ))}
             <div className="totalPrice">
               <span className="total">TOTAL</span>
-              <span className="price">0원</span>
-              <span className="amount">(0개)</span>
+              <span className="price">{totalPrice}</span>
+              <span className="amount">({totalQuantity})</span>
             </div>
             <div className="buyBtnSection">
               <button className="buyBtn">구매하기</button>

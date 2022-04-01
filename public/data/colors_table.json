@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "value": "none",
+    "name": "선택안함"
+  },
+  {
+    "id": 2,
+    "value": "yellow",
+    "name": "옐로우"
+  },
+  {
+    "id": 3,
+    "value": "white",
+    "name": "화이트"
+  },
+  {
+    "id": 4,
+    "value": "blue",
+    "name": "블루"
+  },
+  {
+    "id": 5,
+    "value": "pink",
+    "name": "핑크"
+  },
+  {
+    "id": 6,
+    "value": "violet",
+    "name": "바이올렛"
+  }
+]

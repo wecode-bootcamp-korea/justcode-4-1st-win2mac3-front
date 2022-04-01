@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "value": "none",
+    "name": "선택안함",
+    "price_add": 0
+  },
+  {
+    "id": 2,
+    "value": "supersingle",
+    "name": "SS",
+    "price_add": 0
+  },
+  {
+    "id": 3,
+    "value": "queen",
+    "name": "Q",
+    "price_add": 25000
+  }
+]

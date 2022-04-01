@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "value": "none",
+    "name": "선택안함",
+    "price_add": 0
+  },
+  {
+    "id": 2,
+    "value": "set1",
+    "name": "차렵이불",
+    "price_add": 0
+  },
+  {
+    "id": 3,
+    "value": "set2",
+    "name": "이불세트",
+    "price_add": 12900
+  },
+  {
+    "id": 4,
+    "value": "set3",
+    "name": "패드세트",
+    "price_add": 67000
+  }
+]
