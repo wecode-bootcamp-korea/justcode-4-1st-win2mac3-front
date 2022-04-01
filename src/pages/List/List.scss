@@ -1,6 +1,23 @@
 @use '../../styles/common.scss';
 @import '../../styles/variables.scss';
 
+.products-list {
+  display: flex;
+  justify-content: space-between;
+  max-width: $maxWidth;
+
+  .products-item {
+    width: columns(5);
+    padding: 0 20px;
+    overflow: hidden;
+
+    &:first-child,
+    &:last-child {
+      padding: 0;
+    }
+  }
+}
+
 .card-wrap {
   display: flex;
   width: 100%;

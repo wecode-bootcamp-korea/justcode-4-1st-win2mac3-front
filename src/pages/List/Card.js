@@ -4,35 +4,42 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 const Card = list => {
-  console.log(list);
-  return (
-    <div className="card-wrap">
-      <div className="card-img-wrap">
-        <div className="card-img-cover">
-          <button className="card-btn cart" type="button">
-            <FontAwesomeIcon icon={faShoppingCart} />
-          </button>
-          <button className="card-btn heart" type="button">
-            <FontAwesomeIcon icon={faHeart} />
-          </button>
-          <Link className="card-img" to="#">
-            <img src={list.image_url} alt={list.name} />
-          </Link>
-        </div>
-      </div>
-      <Link className="card-name" to="#">
-        {list.name}
-      </Link>
-      <p className="card-price">
-        <span>
-          <b className="price-after">{list.price_after}</b>
-          <em className="price-before">{list.price_before}</em>
-        </span>
+  const listData = list.list;
 
-        <span className="price-discount">32%</span>
-      </p>
+  const priceAfter = Number(listData.price_after).toLocaleString() + '원';
+  const priceBefore = Number(listData.price_before).toLocaleString() + '원';
+  const discountRate =
+    Math.round((1 - listData.price_after / listData.price_before) * 100) + '%';
+  return (
+    <div className="products-item">
+      <div className="card-wrap">
+        <div className="card-img-wrap">
+          <div className="card-img-cover">
+            <button className="card-btn cart" type="button">
+              <FontAwesomeIcon icon={faShoppingCart} />
+            </button>
+            <button className="card-btn heart" type="button">
+              <FontAwesomeIcon icon={faHeart} />
+            </button>
+            <Link className="card-img" to="#">
+              <img src={listData.image_url} alt={listData.name} />
+            </Link>
+          </div>
+        </div>
+        <Link className="card-name" to="#">
+          {listData.name}
+        </Link>
+        <p className="card-price">
+          <span>
+            <b className="price-after">{priceAfter}</b>
+            <em className="price-before">{priceBefore}</em>
+          </span>
+
+          <span className="price-discount">{discountRate}</span>
+        </p>
+      </div>
     </div>
   );
 };
 
-export default Card;
+export { Card };

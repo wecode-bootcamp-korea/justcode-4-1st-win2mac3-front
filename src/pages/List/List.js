@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import Card from './Card';
+import { Card } from './Card';
 
 import './List.scss';
 
@@ -17,13 +17,13 @@ const List = () => {
         setProducts(data);
       });
   }, []);
-  console.log(products);
+
   return (
-    <section>
-      {products.map(list => {
-        <Card key={list.id} list={list} />;
-      })}
-    </section>
+    <div className="products-list">
+      {products.map(list => (
+        <Card key={list.id} list={list} className="products-item" />
+      ))}
+    </div>
   );
 };
 

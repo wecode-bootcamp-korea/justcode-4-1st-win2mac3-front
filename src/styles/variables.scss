@@ -1,25 +1,28 @@
 /*font-size*/
-$h1:34px;
-$h2:28px;
-$h3:26px;
-$h4:22px;
-$h5:18px;
-$h6:16px;
-$default:16px;
-$small:14px;
-$originPrice:20px;
+$h1: 34px;
+$h2: 28px;
+$h3: 26px;
+$h4: 22px;
+$h5: 18px;
+$h6: 16px;
+$default: 16px;
+$small: 14px;
+$originPrice: 20px;
 /*color*/
-$black:#161616;
-$darkGray:#8c8c8c;
-$lightGray:#c5c5c5;
-$pointColor:#d32a70;
-$brandColor:#003327;
-$alert-red:#ff0000;
-$white:#fff;
+$black: #161616;
+$darkGray: #8c8c8c;
+$lightGray: #c5c5c5;
+$pointColor: #d32a70;
+$brandColor: #003327;
+$alert-red: #ff0000;
+$white: #fff;
 /*font-weight*/
-$bold:700;
-$medium:500;
-$light:300;
-
-
-
+$bold: 700;
+$medium: 500;
+$light: 300;
+/*width*/
+$maxWidth: 1920px;
+$parentWidth: 100%;
+@function columns($number: 1, $all: 20) {
+  @return $parentWidth * ($number/$all);
+}
