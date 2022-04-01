@@ -33,7 +33,7 @@ const Nav = () => {
               <Link to="#">봄,들이기</Link>
             </li>
             <li>
-              <Link to="#">데코뷰 스타일링</Link>
+              <Link to="#">위코뷰 스타일링</Link>
             </li>
             <li>
               <Link to="#">기획전</Link>
