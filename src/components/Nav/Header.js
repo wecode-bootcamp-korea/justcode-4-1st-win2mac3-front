@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import { faCaretDown, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
   return (
@@ -13,7 +13,7 @@ const Header = () => {
       <ul className="user-service">
         <li className="user-cart">
           <Link to="#">
-            <i class="fa-regular fa-bag-shopping" />
+            <FontAwesomeIcon icon={faShoppingCart} />
           </Link>
         </li>
         <li>
