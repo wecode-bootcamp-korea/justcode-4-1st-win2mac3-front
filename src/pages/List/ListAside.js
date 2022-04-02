@@ -4,34 +4,36 @@ import { useState, useEffect } from 'react';
 const ListAside = props => {
   const [sub1Category, setSub1Category] = useState([]);
   const [sub2Category, setSub2Category] = useState([]);
-  //const productUrl = `/products/${productInfo.id}`;
+  const type = props.type;
 
   useEffect(() => {
-    fetch(`data/sub1CategoryData.json`, { method: 'GET' })
+    fetch(`http://localhost:3000/data/sub1CategoryData.json`, { method: 'GET' })
       .then(res => res.json())
       .then(data => {
         setSub1Category(data);
       });
-    fetch(`data/sub2CategoryData.json`, { method: 'GET' })
+    fetch(`http://localhost:3000/data/sub2CategoryData.json`, { method: 'GET' })
       .then(res => res.json())
       .then(data => {
         setSub2Category(data);
       });
   }, []);
-  console.log(sub1Category);
-
+  //console.log(sub1Category);
+  const titleType = props.title[props.type];
+  //console.log(titleType);
   return (
     <aside className="sub-aside">
-      <p className="category1-title">신상품</p>
-
-      <ul className="category2-list">
-        <li>
-          <Link to="#">차렵이불</Link>
-        </li>
-        <li className="category2-current">
-          <Link to="#">패드 | 토퍼</Link>
-        </li>
-      </ul>
+      <p className="category1-title">{titleType}</p>
+      {sub1Category && (
+        <ul className="category2-list">
+          <li>
+            <Link to="#">차렵이불</Link>
+          </li>
+          <li className="category2-current">
+            <Link to="#">패드 | 토퍼</Link>
+          </li>
+        </ul>
+      )}
     </aside>
   );
 };

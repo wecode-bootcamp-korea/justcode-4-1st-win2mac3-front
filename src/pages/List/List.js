@@ -5,20 +5,22 @@ import ListContent from './ListContent';
 
 import './List.scss';
 
+const typeByTitle = {
+  new: '신상품',
+  best: 'BEST',
+};
 const List = () => {
   const params = useParams();
-  const location = useLocation();
-  const pathname = location.pathname;
-  console.log(pathname);
+  const urlType = params.type;
+
   return (
     <article className="sub-page">
       <div className="sub-header">
         <img src="#" alt="#" />
       </div>
       <div className="content-wrap list-wrap">
-        {pathname === '/products/new'}
-        <ListAside title="new" />
-        <ListContent type="new" />
+        <ListAside type={urlType} title={typeByTitle} />
+        <ListContent type={urlType} />
       </div>
     </article>
   );

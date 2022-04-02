@@ -6,13 +6,15 @@ import { Card } from '../../components/Card/Card';
 const ListContent = props => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch(`data/productsData.json`, { method: 'GET' })
+    fetch(`http://localhost:3000/data/productsData.json`, { method: 'GET' })
       .then(res => res.json())
       .then(data => {
         setProducts(data);
       });
   }, []);
-  console.log(products, props);
+  //console.log(products, props);
+  console.log(props);
+  //const titleType = props.title[props.type];
   return (
     <section className="sub-content">
       <div className="sub-content-head">

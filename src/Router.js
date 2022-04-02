@@ -15,7 +15,7 @@ function Router() {
     <BrowserRouter>
       <Nav />
       <Routes>
-        <Route path="/products" element={<List />} />
+        <Route path="/products/:type" element={<List />} />
 
         {/*<Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
