@@ -22,13 +22,10 @@ body {
 }
 /*layout*/
 .content-wrap {
-  width: 80%;
+  width: 90%;
   max-width: $maxWidth;
   margin: 0 auto;
 }
-
-.sub-header {
-  width: $parentWidth;
-  height: 340px;
-  background: #f4f4f4;
+.list-wrap {
+  padding: 80px 0;
 }

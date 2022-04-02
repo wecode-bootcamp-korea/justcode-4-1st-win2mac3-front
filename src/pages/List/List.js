@@ -23,19 +23,24 @@ const List = () => {
   return (
     <article className="sub-page">
       <div className="sub-header" />
-      <div className="content-wrap">
+      <div className="content-wrap list-wrap">
         <aside className="sub-aside">
           <p className="category1-title">신상품</p>
           <ul className="category2-list">
             <li>
-              <Link to="#">먀먀</Link>
+              <Link to="#">차렵이불</Link>
+            </li>
+            <li className="category2-current">
+              <Link to="#">패드 | 토퍼</Link>
             </li>
           </ul>
         </aside>
         <section className="sub-content">
           <div className="sub-content-head">
+            <small className="products-amount">총 91건</small>
             <p className="products-sort">
-              상품정렬 <FontAwesomeIcon icon={faAngleDown} />
+              <b>상품정렬 </b>
+              <FontAwesomeIcon icon={faAngleDown} />
             </p>
           </div>
           <div className="products-list">
