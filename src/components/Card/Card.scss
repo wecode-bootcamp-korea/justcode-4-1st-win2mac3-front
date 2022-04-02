@@ -68,7 +68,7 @@
     flex-direction: row;
     justify-content: space-between;
     .price-after {
-      font-size: $h4;
+      font-size: $h5;
       margin-right: 10px;
     }
     .price-before {
@@ -78,7 +78,7 @@
       color: $lightGray;
     }
     .price-discount {
-      font-size: $h4;
+      font-size: $h5;
       color: $pointColor;
     }
   }
