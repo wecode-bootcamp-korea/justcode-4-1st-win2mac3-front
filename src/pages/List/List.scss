@@ -1,2 +1,19 @@
-@use "../../styles/common.scss";
-@import "../../styles/variables.scss";
+@use '../../styles/common.scss';
+@import '../../styles/variables.scss';
+
+.products-list {
+  display: flex;
+  justify-content: space-between;
+  max-width: $maxWidth;
+
+  .products-item {
+    width: columns(5);
+
+    padding-right: 30px;
+    margin-bottom: 60px;
+    overflow: hidden;
+    &:last-child {
+      padding: 0;
+    }
+  }
+}
