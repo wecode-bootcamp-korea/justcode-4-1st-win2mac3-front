@@ -24,19 +24,19 @@ const Nav = () => {
               <span>제품카테고리</span>
             </li>
             <li>
-              <Link to="#">신상품</Link>
+              <Link to="/products/new">신상품</Link>
             </li>
             <li>
-              <Link to="#">베스트</Link>
+              <Link to="/products/best">베스트</Link>
             </li>
             <li>
-              <Link to="#">봄,들이기</Link>
+              <Link to="/products/best">봄,들이기</Link>
             </li>
             <li>
-              <Link to="#">위코뷰 스타일링</Link>
+              <Link to="/products/best">위코뷰 스타일링</Link>
             </li>
             <li>
-              <Link to="#">기획전</Link>
+              <Link to="/products/best">기획전</Link>
             </li>
           </ul>
           <div className="search-section">
