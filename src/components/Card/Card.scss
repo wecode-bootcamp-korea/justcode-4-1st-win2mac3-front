@@ -1,0 +1,83 @@
+@use '../../styles/common.scss';
+@import '../../styles/variables.scss';
+
+.card-wrap {
+  display: flex;
+  width: $parentWidth;
+  flex-direction: column;
+
+  .card-img-wrap {
+    max-width: 400px;
+  }
+  .card-img-cover {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-top: 120%;
+    background: $lightGray;
+    .card-btn {
+      position: absolute;
+      right: 10px;
+      width: 35px;
+      height: 35px;
+      border: none;
+      border-radius: 50px;
+      color: $darkGray;
+      background: $white;
+      cursor: pointer;
+      transition: all 0.3s;
+      opacity: 0;
+      &.cart {
+        bottom: 55px;
+      }
+      &.heart {
+        bottom: 10px;
+      }
+    }
+    &:hover {
+      .card-btn {
+        opacity: 1;
+      }
+    }
+  }
+  .card-img {
+    display: block;
+    position: absolute;
+    top: 0;
+    height: 0;
+    width: $parentWidth;
+    height: 100%;
+    background: #e2ebf0;
+    overflow: hidden;
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: $parentWidth;
+      height: 100%;
+    }
+  }
+  .card-name {
+    margin: 20px 0 15px;
+    font-size: $h6;
+  }
+  .card-price {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .price-after {
+      font-size: $h4;
+      margin-right: 10px;
+    }
+    .price-before {
+      font-size: $originPrice;
+      font-weight: $light;
+      text-decoration: line-through;
+      color: $lightGray;
+    }
+    .price-discount {
+      font-size: $h4;
+      color: $pointColor;
+    }
+  }
+}

@@ -16,11 +16,19 @@ body {
 }
 
 /*class*/
+
+.hidden {
+  display: hidden !important;
+}
+/*layout*/
 .content-wrap {
   width: 80%;
   max-width: $maxWidth;
   margin: 0 auto;
 }
-.hidden {
-  display: hidden !important;
+
+.sub-header {
+  width: $parentWidth;
+  height: 340px;
+  background: #f4f4f4;
 }
