@@ -35,6 +35,7 @@
     }
   }
   .sub-content {
+    width: calc(100% - 15%);
     padding-top: 10px;
     .sub-content-head {
       display: flex;
