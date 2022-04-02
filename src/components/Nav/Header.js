@@ -8,7 +8,7 @@ const Header = () => {
     <div className="header">
       <p className="header-logo">
         <Link to="/main">
-          <img src="./images/wecoview.svg" alt="logo" />
+          <img src="/images/wecoview.svg" alt="logo" />
         </Link>
       </p>
       <ul className="user-service">

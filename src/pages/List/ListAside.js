@@ -18,11 +18,11 @@ const ListAside = props => {
         setSub2Category(data);
       });
   }, []);
-  console.log(props);
+  console.log(sub1Category);
 
   return (
     <aside className="sub-aside">
-      <p className="category1-title">{props.title}</p>
+      <p className="category1-title">신상품</p>
 
       <ul className="category2-list">
         <li>
