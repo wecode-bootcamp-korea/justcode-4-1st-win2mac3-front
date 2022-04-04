@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import './OrderSummary.scss';
 
-function OrderSummary({ order }) {
+function OrderSummary({ order, rerender, countOut }) {
   const [quantity, setQuantity] = useState(order.quantity);
   const [priceStr, setPriceStr] = useState('');
 
   const quantityMinus = () => {
     quantity > 1 ? setQuantity(quantity - 1) : setQuantity(1);
+    rerender();
   };
   const quantityPlus = () => {
     quantity < 5 ? setQuantity(quantity + 1) : setQuantity(5);
+    rerender();
+  };
+
+  const clickDeleteHandler = () => {
+    countOut(order.id);
   };
 
   useEffect(() => {
@@ -47,7 +53,7 @@ function OrderSummary({ order }) {
             </table>
           </div>
           <div className="price">{priceStr}</div>
-          <div className="cancel">
+          <div className="cancel" onClick={clickDeleteHandler}>
             <i class="fa-solid fa-xmark" />
           </div>
         </div>

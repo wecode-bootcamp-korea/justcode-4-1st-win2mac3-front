@@ -12,6 +12,15 @@ function Detail() {
     fetch('./data/product_detail.json')
       .then(res => res.json())
       .then(res => setProductInfo(res));
+    fetch('./data/colors_table.json')
+      .then(res => res.json())
+      .then(res => setProductColor(res));
+    fetch('./data/sizes_table.json')
+      .then(res => res.json())
+      .then(res => setProductSize(res));
+    fetch('./data/compositions_table.json')
+      .then(res => res.json())
+      .then(res => setProductComposition(res));
   }, []);
 
   let priceAfter = Number(productInfo.price_after).toLocaleString() + '원';
@@ -19,47 +28,41 @@ function Detail() {
   let discountRate =
     Math.round((1 - productInfo.price_after / productInfo.price_before) * 100) +
     '%';
-
-  useEffect(() => {
-    fetch('./data/colors_table.json')
-      .then(res => res.json())
-      .then(res => setProductColor(res));
-  }, []);
-
-  useEffect(() => {
-    fetch('./data/sizes_table.json')
-      .then(res => res.json())
-      .then(res => setProductSize(res));
-  }, []);
-
-  useEffect(() => {
-    fetch('./data/compositions_table.json')
-      .then(res => res.json())
-      .then(res => setProductComposition(res));
-  }, []);
-
-  const [currentColor, setCurrentColor] = useState('none');
-  const [currentSize, setCurrentSize] = useState('none');
-  const [currentComposition, setCurrentComposition] = useState('none');
+  const [color, setColor] = useState();
+  const [size, setSize] = useState();
+  const [composition, setComposition] = useState();
+  const [currentColor, setCurrentColor] = useState([{}]);
+  const [currentSize, setCurrentSize] = useState([{}]);
+  const [currentComposition, setCurrentComposition] = useState([{}]);
   const [orderSummary, setOrderSummary] = useState(false);
   const [orderInfo, setOrderInfo] = useState({
     orderList: [{ id: 0, price: 0, quantity: 0 }],
   });
   const [totalPrice, setTotalPrice] = useState('');
   const [totalQuantity, setTotalQuantity] = useState('');
+  const [render, setRender] = useState(0);
 
   const pickColor = e => {
-    setCurrentColor(productColor.filter(obj => obj.value === e.target.value));
+    if (e.target.value !== 'none') {
+      setCurrentColor(productColor.filter(obj => obj.value === e.target.value));
+      setColor(e.target.value);
+    }
   };
 
   const pickSize = e => {
-    setCurrentSize(productSize.filter(obj => obj.value === e.target.value));
+    if (e.target.value !== 'none') {
+      setCurrentSize(productSize.filter(obj => obj.value === e.target.value));
+      setSize(e.target.value);
+    }
   };
 
   const pickComposition = e => {
-    setCurrentComposition(
-      productComposition.filter(obj => obj.value === e.target.value)
-    );
+    if (e.target.value !== 'none') {
+      setCurrentComposition(
+        productComposition.filter(obj => obj.value === e.target.value)
+      );
+      setComposition(e.target.value);
+    }
   };
 
   useEffect(() => {
@@ -94,7 +97,17 @@ function Detail() {
       setOrderInfo({
         orderList: orderInfo.orderList,
       });
+      setOrderSummary(false);
+
+      setCurrentColor([{}]);
+      setCurrentSize([{}]);
+      setCurrentComposition([{}]);
+
+      setColor('none');
+      setSize('none');
+      setComposition('none');
     }
+
     setTotalPrice(
       Number(
         orderInfo.orderList
@@ -119,14 +132,27 @@ function Detail() {
     currentSize,
     orderInfo.orderList,
     orderSummary,
+    productColor,
     productComposition,
     productInfo.id,
     productInfo.name,
     productInfo.price_after,
+    productSize,
+    render,
   ]);
 
-  console.log(orderInfo.orderList);
-  console.log(totalPrice);
+  // console.log(orderInfo.orderList);
+  // console.log(totalPrice);
+  // console.log(render);
+
+  const rerender = () => {
+    render === 0 ? setRender(1) : setRender(0);
+  };
+
+  const countOut = id => {
+    const newOrder = orderInfo.orderList.filter(obj => obj.id !== id);
+    setOrderInfo({ orderList: newOrder });
+  };
 
   return (
     <div className="body">
@@ -160,7 +186,7 @@ function Detail() {
                 <tr>
                   <td className="firstColumn">색상</td>
                   <td>
-                    <select name="itemColor" onChange={pickColor}>
+                    <select name="itemColor" value={color} onChange={pickColor}>
                       <option value="none">
                         - &#91;필수&#93; 옵션을 선택해 주세요 -
                       </option>
@@ -175,7 +201,7 @@ function Detail() {
                 <tr>
                   <td className="firstColumn">사이즈</td>
                   <td>
-                    <select name="itemSize" onChange={pickSize}>
+                    <select name="itemSize" value={size} onChange={pickSize}>
                       <option value="none">
                         - &#91;필수&#93; 옵션을 선택해 주세요 -
                       </option>
@@ -190,7 +216,11 @@ function Detail() {
                 <tr>
                   <td className="firstColumn">구성</td>
                   <td>
-                    <select name="itemComposition" onChange={pickComposition}>
+                    <select
+                      name="itemComposition"
+                      value={composition}
+                      onChange={pickComposition}
+                    >
                       <option value="none">
                         - &#91;필수&#93; 옵션을 선택해 주세요 -
                       </option>
@@ -208,7 +238,12 @@ function Detail() {
               </table>
             </div>
             {orderInfo.orderList.map(order => (
-              <OrderSummary key={order.id} order={order} />
+              <OrderSummary
+                key={order.id}
+                order={order}
+                rerender={rerender}
+                countOut={countOut}
+              />
             ))}
             <div className="totalPrice">
               <span className="total">TOTAL</span>
