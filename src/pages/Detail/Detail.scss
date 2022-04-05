@@ -79,33 +79,35 @@
             font-size: 16px;
             vertical-align: middle;
             margin-bottom: 30px;
-            tr {
-              border-bottom: 1px solid #c5c5c5;
-              .itemDescription {
-                vertical-align: middle;
-                font-size: 14px;
-                color: #c5c5c5;
-                line-height: 18px;
+            tbody {
+              tr {
+                border-bottom: 1px solid #c5c5c5;
+                .itemDescription {
+                  vertical-align: middle;
+                  font-size: 14px;
+                  color: #c5c5c5;
+                  line-height: 18px;
+                }
+                .firstColumn {
+                  width: 25%;
+                  vertical-align: middle;
+                }
               }
-              .firstColumn {
-                width: 25%;
+              td {
                 vertical-align: middle;
-              }
-            }
-            td {
-              vertical-align: middle;
-              select {
-                width: 100%;
-                padding: 10px 15px;
-                border: 1px solid #c5c5c5;
-                border-radius: 0;
-                color: #c5c5c5;
-                font-size: 14px;
-                font-family: Pretendard, -apple-system, BlinkMacSystemFont,
-                  system-ui, Roboto, 'Helvetica Neue', 'Segoe UI',
-                  'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic',
-                  'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
-                  sans-serif;
+                select {
+                  width: 100%;
+                  padding: 10px 15px;
+                  border: 1px solid #c5c5c5;
+                  border-radius: 0;
+                  color: #c5c5c5;
+                  font-size: 14px;
+                  font-family: Pretendard, -apple-system, BlinkMacSystemFont,
+                    system-ui, Roboto, 'Helvetica Neue', 'Segoe UI',
+                    'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic',
+                    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+                    sans-serif;
+                }
               }
             }
           }

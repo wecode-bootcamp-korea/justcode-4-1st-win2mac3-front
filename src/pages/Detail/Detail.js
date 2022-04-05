@@ -141,8 +141,8 @@ function Detail() {
     render,
   ]);
 
-  // console.log(orderInfo.orderList);
-  // console.log(totalPrice);
+  console.log(orderInfo.orderList);
+  console.log(totalPrice);
   // console.log(render);
 
   const rerender = () => {
@@ -179,62 +179,70 @@ function Detail() {
             </div>
             <div className="itemOption">
               <table>
-                <tr>
-                  <td className="firstColumn itemDescription">상품설명</td>
-                  <td className="itemDescription">{productInfo.description}</td>
-                </tr>
-                <tr>
-                  <td className="firstColumn">색상</td>
-                  <td>
-                    <select name="itemColor" value={color} onChange={pickColor}>
-                      <option value="none">
-                        - &#91;필수&#93; 옵션을 선택해 주세요 -
-                      </option>
-                      {productColor.map(color => (
-                        <option key={color.value} value={color.value}>
-                          {color.name}
+                <tbody>
+                  <tr>
+                    <td className="firstColumn itemDescription">상품설명</td>
+                    <td className="itemDescription">
+                      {productInfo.description}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="firstColumn">색상</td>
+                    <td>
+                      <select
+                        name="itemColor"
+                        value={color}
+                        onChange={pickColor}
+                      >
+                        <option value="none">
+                          - &#91;필수&#93; 옵션을 선택해 주세요 -
                         </option>
-                      ))}
-                    </select>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="firstColumn">사이즈</td>
-                  <td>
-                    <select name="itemSize" value={size} onChange={pickSize}>
-                      <option value="none">
-                        - &#91;필수&#93; 옵션을 선택해 주세요 -
-                      </option>
-                      {productSize.map(size => (
-                        <option key={size.value} value={size.value}>
-                          {size.name}
+                        {productColor.map(color => (
+                          <option key={color.id} value={color.value}>
+                            {color.name}
+                          </option>
+                        ))}
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="firstColumn">사이즈</td>
+                    <td>
+                      <select name="itemSize" value={size} onChange={pickSize}>
+                        <option value="none">
+                          - &#91;필수&#93; 옵션을 선택해 주세요 -
                         </option>
-                      ))}
-                    </select>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="firstColumn">구성</td>
-                  <td>
-                    <select
-                      name="itemComposition"
-                      value={composition}
-                      onChange={pickComposition}
-                    >
-                      <option value="none">
-                        - &#91;필수&#93; 옵션을 선택해 주세요 -
-                      </option>
-                      {productComposition.map(composition => (
-                        <option
-                          key={composition.value}
-                          value={composition.value}
-                        >
-                          {composition.name}
+                        {productSize.map(size => (
+                          <option key={size.id} value={size.value}>
+                            {size.name}
+                          </option>
+                        ))}
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="firstColumn">구성</td>
+                    <td>
+                      <select
+                        name="itemComposition"
+                        value={composition}
+                        onChange={pickComposition}
+                      >
+                        <option value="none">
+                          - &#91;필수&#93; 옵션을 선택해 주세요 -
                         </option>
-                      ))}
-                    </select>
-                  </td>
-                </tr>
+                        {productComposition.map(composition => (
+                          <option
+                            key={composition.id}
+                            value={composition.value}
+                          >
+                            {composition.name}
+                          </option>
+                        ))}
+                      </select>
+                    </td>
+                  </tr>
+                </tbody>
               </table>
             </div>
             {orderInfo.orderList.map(order => (
