@@ -13,7 +13,7 @@ const ListContent = props => {
       });
   }, []);
   //console.log(products, props);
-  console.log(props);
+  //console.log(props);
   //const titleType = props.title[props.type];
   return (
     <section className="sub-content">
