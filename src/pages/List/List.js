@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import React from 'react';
+import { useParams } from 'react-router-dom';
 import ListAside from './ListAside';
 import ListContent from './ListContent';
 

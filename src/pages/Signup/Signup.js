@@ -71,7 +71,7 @@ function Signup() {
   return (
     <div>
       <form className="sign-up" onSubmit={handleSubmit}>
-        <span className="path">홈 > 회원가입</span>
+        <span className="path">홈 &#62; 회원가입</span>
         <div className="form">
           <div className="title">회원가입</div>
           <div className="table">

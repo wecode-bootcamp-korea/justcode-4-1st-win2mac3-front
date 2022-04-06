@@ -39,8 +39,8 @@ function Main() {
         </div>
         <div className="thirdBanner">
           <span className="thirdBannerTitle">BEST</span>
-          <ProductCarousel />
         </div>
+        <ProductCarousel />
       </div>
     </div>
   );

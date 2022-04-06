@@ -10,20 +10,17 @@ import List from './pages/List/List';
 import Detail from './pages/Detail/Detail';
 import Cart from './pages/Cart/Cart';
 
-
 function Router() {
   return (
     <BrowserRouter>
       <Nav />
       <Routes>
-
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/main" element={<Main />} />
         <Route path="/products/:type" element={<List />} />
         <Route path="/detail" element={<Detail />} />
         <Route path="/cart" element={<Cart />} />
-
       </Routes>
       <Footer />
     </BrowserRouter>
