@@ -17,10 +17,10 @@ const ProductCarousel = () => {
         setProducts(data);
       });
   }, []);
-  useEffect(() => {
-    console.log(`currentIndex:${currentIndex}`);
-    console.log(products.length);
-  }, [currentIndex]);
+  // useEffect(() => {
+  //   // console.log(`currentIndex:${currentIndex}`);
+  //   // console.log(products.length);
+  // }, [currentIndex]);
   function handleSwipeRight() {
     if (currentIndex <= products.length) {
       carouselInner.current.style.transition = `all 0.6s ease-out`;
