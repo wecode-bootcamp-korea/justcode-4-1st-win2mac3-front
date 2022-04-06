@@ -16,13 +16,13 @@ function CarouselBanner() {
       setCurrentSlide(currentSlide - 1);
     } else {
       target.style.transition = '0s';
-      setCurrentSlide(3);
+      setCurrentSlide(4);
     }
   };
 
   const slideToNext = () => {
     delay === 5000 ? setDelay(5001) : setDelay(5000);
-    if (currentSlide <= 2) {
+    if (currentSlide <= 3) {
       target.style.transition = 'all 1s';
       setCurrentSlide(currentSlide + 1);
     } else {
@@ -70,10 +70,11 @@ function CarouselBanner() {
           className="firstCarouselContainer"
           style={{ transform: `translateX(-${slideSpot}px)` }}
         >
+          <img src="./images/banner/ex0.jpg" alt="" />
           <img src="./images/banner/ex1.jpg" alt="" />
           <img src="./images/banner/ex2.jpg" alt="" />
           <img src="./images/banner/ex3.jpg" alt="" />
-          <img src="./images/banner/ex1.jpg" alt="" />
+          <img src="./images/banner/ex0.jpg" alt="" />
         </div>
       </div>
       <div className="sideButtonBox">

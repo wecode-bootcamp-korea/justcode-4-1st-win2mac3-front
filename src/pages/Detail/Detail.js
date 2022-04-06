@@ -94,6 +94,9 @@ function Detail() {
           currentComposition[0].price_add,
         quantity: 1,
       });
+      if (orderInfo.orderList[0].id === 0) {
+        orderInfo.orderList.shift();
+      }
       setOrderInfo({
         orderList: orderInfo.orderList,
       });
@@ -141,9 +144,9 @@ function Detail() {
     render,
   ]);
 
-  console.log(orderInfo.orderList);
-  console.log(totalPrice);
+  // console.log(totalPrice);
   // console.log(render);
+  // console.log(orderInfo.orderList);
 
   const rerender = () => {
     render === 0 ? setRender(1) : setRender(0);
@@ -155,7 +158,7 @@ function Detail() {
   };
 
   return (
-    <div className="body">
+    <div className="detailBody">
       <div className="detailWrapper">
         <div className="homeToWhere">
           홈 &#62; {productInfo.one_sub_category} &#62;{' '}
