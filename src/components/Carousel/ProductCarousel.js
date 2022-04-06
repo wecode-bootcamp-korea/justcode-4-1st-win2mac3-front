@@ -17,23 +17,28 @@ const ProductCarousel = () => {
         setProducts(data);
       });
   }, []);
-
-  function handleSwipeRight() {
-    setCurrentIndex(currentIndex + 1);
+  useEffect(() => {
     console.log(`currentIndex:${currentIndex}`);
-    if (currentIndex > 3) {
-      setCurrentIndex(0);
+    console.log(products.length);
+  }, [currentIndex]);
+  function handleSwipeRight() {
+    if (currentIndex <= products.length) {
+      carouselInner.current.style.transition = `all 0.6s ease-out`;
+      setCurrentIndex(currentIndex + 1);
+    } else {
+      setCurrentIndex(currentIndex - currentIndex);
       carouselInner.current.style.transition = `all 0s`;
-    } else if (currentIndex < 0) {
-      setCurrentIndex(5);
     }
-    console.log(carouselInner.current.style.transform);
+
+    //console.log(carouselInner.current.style.transform);
   }
   function handleSwipeLeft() {
-    setCurrentIndex(currentIndex - 1);
-    console.log(`currentIndex:${currentIndex}`);
-    if (currentIndex < 1) {
-      setCurrentIndex(5);
+    if (currentIndex <= 0) {
+      carouselInner.current.style.transition = `all 0s`;
+      setCurrentIndex(products.length);
+    } else {
+      carouselInner.current.style.transition = `all 0.6s ease-out`;
+      setCurrentIndex(currentIndex - 1);
     }
   }
   const slideMovePx = -260 * (0 + currentIndex);
