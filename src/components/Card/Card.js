@@ -12,7 +12,7 @@ const Card = list => {
   const discountRate =
     Math.round((1 - listData.price_after / listData.price_before) * 100) + '%';
   return (
-    <div className="products-item">
+    <div className={list.classProp}>
       <div className="card-wrap">
         <div className="card-img-wrap">
           <div className="card-img-cover">
