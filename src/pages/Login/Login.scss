@@ -108,13 +108,22 @@
 .sns-login {
   display: flex;
   justify-content: space-between;
-  padding: 15px;
+  align-items: center;
+  padding: 10px 15px;
   margin-bottom: 5px;
   border: 1px solid #e1e1e1;
   border-radius: 3px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
   color: #777;
+}
+
+.fa-line {
+  color: #0cda6d;
+}
+
+.fa-google, .fa-twitter {
+  color:#4285f4
 }
 
 .sns-login:hover {
@@ -124,4 +133,9 @@
 
 .sns-login span {
   opacity: 0.7;
+}
+
+.error {
+  margin: 5px 0px;
+  color: #f00;
 }
