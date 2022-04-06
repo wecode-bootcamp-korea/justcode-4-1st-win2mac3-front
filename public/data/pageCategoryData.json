@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "categoryName": "best",
+    "pageUrl": "/products/best"
+  },
+  {
+    "id": 2,
+    "categoryName": "new",
+    "pageUrl": "/products/new"
+  },
+  {
+    "id": 3,
+    "categoryName": "위코뷰 스타일링",
+    "pageUrl": "/products/best"
+  },
+  {
+    "id": 4,
+    "categoryName": "매장안내",
+    "pageUrl": "/products/best"
+  }
+]

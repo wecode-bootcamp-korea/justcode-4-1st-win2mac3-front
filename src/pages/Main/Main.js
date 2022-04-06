@@ -1,6 +1,7 @@
 import React from 'react';
 import './Main.scss';
 import CarouselBanner from './CarouselBanner';
+import { ProductCarousel } from '../../components/Carousel/ProductCarousel';
 
 function Main() {
   return (
@@ -37,7 +38,8 @@ function Main() {
           </table>
         </div>
         <div className="thirdBanner">
-          <span className="thirdBannerTitle">WHAT'S NEW</span>
+          <span className="thirdBannerTitle">BEST</span>
+          <ProductCarousel />
         </div>
       </div>
     </div>
