@@ -30,5 +30,37 @@
     "created_at": "2022-03-28 16:47:11.650",
     "price_after": 69900,
     "price_before": 110000
+  },
+  {
+    "id": 5,
+    "name": "갓봉준 차렵이불",
+    "image_url": "https://images.pexels.com/photos/6992963/pexels-photo-6992963.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+    "created_at": "2022-03-28 16:47:11.650",
+    "price_after": 69900,
+    "price_before": 110000
+  },
+  {
+    "id": 6,
+    "name": "채령롱 블루플라워 차렵이불",
+    "image_url": "https://images.pexels.com/photos/7445127/pexels-photo-7445127.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+    "created_at": "2022-03-28 16:47:11.650",
+    "price_after": 69900,
+    "price_before": 110000
+  },
+  {
+    "id": 7,
+    "name": "스탠다드송 차렵이불",
+    "image_url": "https://images.pexels.com/photos/4050430/pexels-photo-4050430.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+    "created_at": "2022-03-28 16:47:11.650",
+    "price_after": 69900,
+    "price_before": 110000
+  },
+  {
+    "id": 8,
+    "name": "갓경원 차렵이불",
+    "image_url": "https://images.pexels.com/photos/7445030/pexels-photo-7445030.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+    "created_at": "2022-03-28 16:47:11.650",
+    "price_after": 69900,
+    "price_before": 110000
   }
 ]
