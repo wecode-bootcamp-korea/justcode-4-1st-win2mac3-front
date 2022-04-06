@@ -1,35 +1,36 @@
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCart } from '@fortawesome/free-regular-svg-icons/faCart';
-import { faCaretDown } from '@fortawesome/free-solid-svg-icons/faCaretdown';
+import { faCaretDown, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
   return (
     <div className="header">
       <p className="header-logo">
         <Link to="/main">
-          <img src="./images/wecoview.svg" alt="logo" />
+          <img src="/images/wecoview.svg" alt="logo" />
         </Link>
-        <ul className="user-service">
-          <li>
-            <Link to="#">
-              <FontAwesomeIcon icon={faCart} />
-            </Link>
-          </li>
-          <li>
-            <Link to="/signup">회원가입</Link>
-          </li>
-          <li>
-            <Link to="/login">로그인</Link>
-          </li>
-          <li>
-            <Link to="#">
-              고객센터 <FontAwesomeIcon icon={faCaretDown} />
-            </Link>
-          </li>
-        </ul>
       </p>
+      <ul className="user-service">
+        <li className="user-cart">
+          <Link to="#">
+            <FontAwesomeIcon icon={faShoppingBag} />
+          </Link>
+        </li>
+        <li>
+          <Link to="/signup">회원가입</Link>
+        </li>
+        <li>
+          <Link to="/login">로그인</Link>
+        </li>
+        <li>
+          <Link to="#">
+            고객센터 &nbsp;&nbsp;
+            <FontAwesomeIcon icon={faCaretDown} />
+          </Link>
+        </li>
+      </ul>
     </div>
   );
 };
+
 export { Header };

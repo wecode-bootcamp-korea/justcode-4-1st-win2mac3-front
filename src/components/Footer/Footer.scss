@@ -1,2 +1,152 @@
-@use "../../styles/common.scss";
-@import "../../styles/variables.scss";
+@use '../../styles/common.scss';
+@import '../../styles/variables.scss';
+
+footer {
+  list-style: none;
+  a {
+    text-decoration: none;
+  }
+
+  .footer-list {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #f5f5f5;
+    height: 52px;
+  }
+
+  .text-list {
+    display: flex;
+    font-size: 14px;
+    padding: 19px 0px;
+    align-items: center;
+
+    ol {
+      padding: 0px 10px;
+      float: left;
+    }
+    ol::after {
+      margin-left: 20px;
+      content: '|';
+      font-size: 5px;
+      color: #8c8c8c;
+    }
+    ol:last-child::after {
+      content: '';
+    }
+  }
+
+  .icon-list {
+    display: flex;
+    font-size: 14px;
+    padding: 19px 0px;
+    ol {
+      margin: 10px;
+      padding: 5px;
+      font-size: 20px;
+      border: 1px solid #8c8c8c;
+      border-radius: 50%;
+    }
+  }
+
+  .shop-info {
+    display: flex;
+    padding: 60px 10px;
+    width: 100%;
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 14px;
+    background-color: #ffffff;
+
+    h3 {
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    h3::after {
+      content: '';
+      display: block;
+      width: 20px;
+      border-bottom: 1px solid black;
+      padding-bottom: 15px;
+    }
+    strong {
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 2;
+    }
+
+    ol {
+      margin-top: 5px;
+      color: #999;
+    }
+
+    p {
+      display: block;
+      margin-block-start: 1em;
+      margin-block-end: 1em;
+      margin-inline-start: 0px;
+    }
+
+    span {
+      color: rgb(102, 102, 102);
+    }
+
+    .box1 {
+      width: 35%;
+      text-decoration: none;
+      border-right: 1px solid #e5e5e5;
+    }
+
+    .box2 {
+      width: 22.5%;
+      padding: 0 62px;
+      border-right: 1px solid #e5e5e5;
+    }
+
+    .box3 {
+      width: 22.5%;
+      padding: 0 62px;
+      border-right: 1px solid #e5e5e5;
+    }
+
+    .box4 {
+      width: 20%;
+      padding: 0 62px;
+    }
+  }
+
+  .company-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 60px 5px;
+    font-size: 14px;
+
+    ul {
+      display: flex;
+      margin-top: 5px;
+    }
+
+    span {
+      color: rgb(102, 102, 102);
+    }
+
+    // .company-info-text {
+    // }
+
+    .company-info-image {
+      align-items: center;
+
+      .image {
+        font-size: 18px;
+        font-weight: 800;
+      }
+
+      .text {
+        border: 1px solid #e5e5e5;
+        padding: 3px;
+        font-size: 12px;
+      }
+    }
+  }
+}
