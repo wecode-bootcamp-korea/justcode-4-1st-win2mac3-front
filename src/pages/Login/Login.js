@@ -54,9 +54,9 @@ function Login() {
           onChange={handlePwInput}
         />
         <div className="save-id">
-          <input id="save" type="radio" />
+          <input id="save" type="radio" name="login" />
           <label htmlFor="save">아이디저장</label>
-          <input id="auto-login" type="radio" />
+          <input id="auto-login" type="radio" name="login" />
           <label htmlFor="auto-login">자동로그인</label>
         </div>
         <button

@@ -21,9 +21,10 @@
 .user-status .link {
   width: 200px;
   padding: 15px 20px;
-  border: 1px solid rgba(0, 0, 0, 0.3);
+  border: 1px solid #aaa;
   text-align: center;
   font-size: 14px;
+  color: #222;
 }
 .user-status .link:first-child {
   border-top-left-radius: 5px;
@@ -36,7 +37,7 @@
 }
 
 .login-form input {
-  width: 400px;
+  width: 370px;
   height: 45px;
   padding: 0 15px;
   border-radius: 5px;
@@ -53,6 +54,12 @@
   width: 20px;
   height: 20px;
   margin-right: 10px;
+  background-color: #eee;
+  accent-color: black;
+}
+
+.login-form .save-id label {
+  font-size: 12px;
 }
 
 #auto-login {
@@ -64,8 +71,8 @@
   border-radius: 5px;
   width: 400px;
   padding: 12px 0;
-  color: white;
-  font-size: 14px;
+  color: #fff;
+  font-size: 15px;
   background-color: #31363d;
 }
 .login-btn:enabled {
@@ -81,6 +88,8 @@
 
 .find-column span {
   font-size: 12px;
+  font-weight: 300;
+  color: #222;
 }
 .find-column span:nth-child(2) {
   margin: 0 5px;
@@ -101,8 +110,11 @@
   justify-content: space-between;
   padding: 15px;
   margin-bottom: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.3);
+  border: 1px solid #e1e1e1;
   border-radius: 3px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #777;
 }
 
 .sns-login:hover {
