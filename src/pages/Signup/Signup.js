@@ -25,6 +25,8 @@ function Signup() {
     setIsSubmit(true);
   };
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
     }
@@ -36,43 +38,38 @@ function Signup() {
       /^([0-9a-zA-Z_.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
     const pwRegex =
       /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
-    if (!values.username) {
-      errors.username = '이름을 입력해주세요.';
-    } else if (values.username.length < 2 || values.username.length > 5) {
-      errors.username = '이름이 형식에 맞지 않습니다.';
-    }
     if (!values.email) {
       errors.email = '아이디를 입력해주세요.';
+      return errors;
     } else if (!emailRegex.test(values.email)) {
       errors.email = '아이디가 형식에 맞지 않습니다.';
-    }
-    if (!values.password) {
+      return errors;
+    } else if (!values.password) {
       errors.password = '비밀번호를 입력해주세요.';
+      return errors;
     } else if (
       values.password.length < 8 ||
       values.password.length > 16 ||
       !pwRegex.test(values.password)
     ) {
       errors.password = '비밀번호가 형식에 맞지 않습니다.';
+      return errors;
     }
     if (values.password !== values.passwordcheck) {
       errors.passwordcheck = '비밀번호가 일치하지 않습니다.';
+      return errors;
     }
-    return errors;
-  };
-
-  const navigate = useNavigate();
-
-  const goToMain = () => {
-    if (isSubmit === true) {
-      navigate('/login');
-      alert('회원가입을 축하합니다.!!');
+    if (!values.username) {
+      errors.username = '이름을 입력해주세요.';
+      return errors;
+    } else if (values.username.length < 2 || values.username.length > 5) {
+      errors.username = '이름이 형식에 맞지 않습니다.';
+      return errors;
     }
+    return navigate('/login');
   };
-
   return (
     <div>
-      <pre>{JSON.stringify(formValues, undefined, 2)}</pre>
       <form className="sign-up" onSubmit={handleSubmit}>
         <span className="path">홈 > 회원가입</span>
         <div className="form">
@@ -333,9 +330,7 @@ function Signup() {
           </div>
         </div>
         <div className="submit">
-          <button className="submitBtn" onClick={goToMain}>
-            회원가입
-          </button>
+          <button className="submitBtn">회원가입</button>
         </div>
       </form>
     </div>
