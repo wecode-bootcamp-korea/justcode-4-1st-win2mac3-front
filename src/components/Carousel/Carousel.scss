@@ -30,7 +30,7 @@
   overflow: hidden;
   .carousel-inner {
     position: absolute;
-    width: calc($parentWidth * 2);
+    width: auto;
     height: 100%;
     top: 0;
     left: 0;
@@ -44,7 +44,7 @@
   }
 
   .carousel-item {
-    width: columns(1.8);
+    width: 230px;
     overflow: hidden;
   }
 }
