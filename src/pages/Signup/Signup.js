@@ -23,6 +23,28 @@ function Signup() {
     e.preventDefault();
     setFormErrors(validate(formValues));
     setIsSubmit(true);
+    sendForm(formValues);
+  };
+
+  const sendForm = formValues => {
+    fetch('http://localhost:8000/user/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: formValues.username,
+        email: formValues.email,
+        password: formValues.password,
+      }),
+    })
+      .then(res => res.json())
+      .then(res => console.log(res));
+    console.log({
+      username: formValues.username,
+      email: formValues.email,
+      password: formValues.password,
+    });
   };
 
   const navigate = useNavigate();

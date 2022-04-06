@@ -3,12 +3,14 @@
 
 .card-wrap {
   display: flex;
-  width: $parentWidth;
   flex-direction: column;
+  width: 100%;
+  margin-bottom: 100px;
 
   .card-img-wrap {
-    max-width: 400px;
+    width: 100%;
   }
+
   .card-img-cover {
     position: relative;
     width: 100%;

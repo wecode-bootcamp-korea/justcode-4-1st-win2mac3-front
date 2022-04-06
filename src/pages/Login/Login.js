@@ -21,6 +21,23 @@ function Login() {
     e.preventDefault();
     setFormErrors(validate(formValues));
     setIsSubmit(true);
+    sendForm(formValues);
+  };
+
+  const sendForm = formValues => {
+    fetch('http://localhost:8000/user/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: formValues.email,
+        password: formValues.password,
+      }),
+    })
+      .then(res => res.json())
+      .then(res => console.log(res));
+    console.log(formValues.email);
   };
 
   useEffect(() => {
@@ -45,7 +62,7 @@ function Login() {
       errors.password = '아이디와 비밀번호를 다시 입력해주세요.';
       return errors;
     }
-    return navigate('/signup');
+    return navigate('');
   };
 
   return (
