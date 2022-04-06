@@ -35,6 +35,9 @@
       }
     }
     .thirdBanner {
+      width: 100%;
+      display: flex;
+      justify-content: center;
       .thirdBannerTitle {
         font-size: 28px;
         font-weight: 500;
