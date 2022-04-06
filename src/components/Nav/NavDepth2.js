@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { MenuLink, ProductLink } from './Links.js';
 
@@ -7,12 +6,14 @@ const NavDepth2 = show => {
   const [sub1Category, setSub1Category] = useState([]);
 
   useEffect(() => {
-    fetch('./data/pageCategoryData.json', { method: 'GET' })
+    fetch('http://localhost:3000/data/pageCategoryData.json', { method: 'GET' })
       .then(res => res.json())
       .then(data => {
         setPageCategory(data);
       });
-    fetch('./data/sub1CategoryData.json', { method: 'GET' })
+    fetch('http://localhost:3000/data/sub1CategoryData.json', {
+      method: 'GET',
+    })
       .then(res => res.json())
       .then(data => {
         setSub1Category(data);

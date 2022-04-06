@@ -1,19 +1,20 @@
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
+
+import { faCaretDown, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
   return (
     <div className="header">
       <p className="header-logo">
         <Link to="/main">
-          <img src="./images/wecoview.svg" alt="logo" />
+          <img src="/images/wecoview.svg" alt="logo" />
         </Link>
       </p>
       <ul className="user-service">
         <li className="user-cart">
           <Link to="#">
-            <i class="fa-regular fa-bag-shopping" />
+            <FontAwesomeIcon icon={faShoppingBag} />
           </Link>
         </li>
         <li>
