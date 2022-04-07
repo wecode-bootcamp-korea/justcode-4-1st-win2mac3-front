@@ -9,6 +9,7 @@ body {
     'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR',
     'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
     sans-serif;
+
   a {
     text-decoration: none;
     color: currentColor;
@@ -22,13 +23,10 @@ body {
 }
 /*layout*/
 .content-wrap {
-  width: 80%;
+  width: 1900px;
   max-width: $maxWidth;
   margin: 0 auto;
 }
-
-.sub-header {
-  width: $parentWidth;
-  height: 340px;
-  background: #f4f4f4;
+.list-wrap {
+  padding: 80px 0;
 }

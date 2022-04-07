@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 import { faCaretDown, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
@@ -8,7 +7,7 @@ const Header = () => {
     <div className="header">
       <p className="header-logo">
         <Link to="/main">
-          <img src="./images/wecoview.svg" alt="logo" />
+          <img src="/images/wecoview.svg" alt="logo" />
         </Link>
       </p>
       <ul className="user-service">
@@ -33,4 +32,5 @@ const Header = () => {
     </div>
   );
 };
+
 export { Header };

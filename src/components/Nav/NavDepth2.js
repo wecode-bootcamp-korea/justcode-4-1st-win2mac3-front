@@ -11,7 +11,9 @@ const NavDepth2 = show => {
       .then(data => {
         setPageCategory(data);
       });
-    fetch('http://localhost:3000/data/sub1CategoryData.json', { method: 'GET' })
+    fetch('http://localhost:3000/data/sub1CategoryData.json', {
+      method: 'GET',
+    })
       .then(res => res.json())
       .then(data => {
         setSub1Category(data);

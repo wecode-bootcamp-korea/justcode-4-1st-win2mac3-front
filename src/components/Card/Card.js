@@ -12,7 +12,7 @@ const Card = list => {
   const discountRate =
     Math.round((1 - listData.price_after / listData.price_before) * 100) + '%';
   return (
-    <div className="products-item">
+    <div className={list.classProp}>
       <div className="card-wrap">
         <div className="card-img-wrap">
           <div className="card-img-cover">
@@ -22,12 +22,12 @@ const Card = list => {
             <button className="card-btn heart" type="button">
               <FontAwesomeIcon icon={faHeart} />
             </button>
-            <Link className="card-img" to="#">
+            <Link className="card-img" to={`/products/` + listData.id}>
               <img src={listData.image_url} alt={listData.name} />
             </Link>
           </div>
         </div>
-        <Link className="card-name" to="#">
+        <Link className="card-name" to={`/products/` + listData.id}>
           {listData.name}
         </Link>
         <p className="card-price">

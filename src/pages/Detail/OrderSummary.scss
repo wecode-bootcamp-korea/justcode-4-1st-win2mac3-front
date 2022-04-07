@@ -1,0 +1,58 @@
+@use '../../styles/common.scss';
+@import '../../styles/variables.scss';
+
+.optionSummary {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #eeeeee;
+  padding: 40px 30px;
+  margin: 10px 0px;
+  .summary {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    font-size: 18px;
+    font-weight: 200;
+    padding-right: 10px;
+    .options {
+      color: rgb(129, 129, 129);
+      font-weight: 200;
+    }
+  }
+  .quantity {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    padding-right: 10px;
+    table tr td {
+      background-color: white;
+      border: 1px solid rgb(201, 201, 201);
+      padding: 2px;
+      span {
+        background-color: transparent;
+        text-align: center;
+        font-size: 20px;
+        padding: 0px 10px;
+      }
+      button {
+        border: 0px;
+        background-color: transparent;
+        text-align: center;
+        font-size: 20px;
+      }
+    }
+  }
+  .price {
+    width: 25%;
+    text-align: center;
+    font-size: 18px;
+  }
+  .cancel {
+    padding-top: 1px;
+    color: gray;
+    font-size: 18px;
+  }
+}

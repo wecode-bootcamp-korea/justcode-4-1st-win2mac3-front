@@ -3,12 +3,14 @@
 
 .card-wrap {
   display: flex;
-  width: $parentWidth;
   flex-direction: column;
+  width: 100%;
+  margin-bottom: 100px;
 
   .card-img-wrap {
-    max-width: 400px;
+    width: 100%;
   }
+
   .card-img-cover {
     position: relative;
     width: 100%;
@@ -27,6 +29,7 @@
       cursor: pointer;
       transition: all 0.3s;
       opacity: 0;
+      z-index: 10;
       &.cart {
         bottom: 55px;
       }
@@ -60,23 +63,24 @@
   .card-name {
     margin: 20px 0 15px;
     font-size: $h6;
+    min-height: 40px;
   }
   .card-price {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     .price-after {
-      font-size: $h4;
+      font-size: $h5;
       margin-right: 10px;
     }
     .price-before {
-      font-size: $originPrice;
+      font-size: $h6;
       font-weight: $light;
       text-decoration: line-through;
       color: $lightGray;
     }
     .price-discount {
-      font-size: $h4;
+      font-size: $h5;
       color: $pointColor;
     }
   }
