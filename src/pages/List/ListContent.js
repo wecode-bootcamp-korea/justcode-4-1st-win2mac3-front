@@ -6,12 +6,14 @@ import { Card } from '../../components/Card/Card';
 const ListContent = props => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:3000/data/productsData.json`, { method: 'GET' })
+    fetch('http://localhost:8000/products/allbestsell', { method: 'GET' })
       .then(res => res.json())
       .then(data => {
         setProducts(data);
       });
   }, []);
+
+  console.log(products);
   //console.log(products, props);
   //console.log(props);
   //const titleType = props.title[props.type];
@@ -28,8 +30,11 @@ const ListContent = props => {
       </div>
       <div className="products-list">
         {products.map(list => (
-          <Card key={list.id} list={list} className="products-item" />
+          <Card key={list.id} list={list} classProp="products-item" />
         ))}
+        <div className="card-img-fake" />
+        <div className="card-img-fake" />
+        <div className="card-img-fake" />
       </div>
     </section>
   );

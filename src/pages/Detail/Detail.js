@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import './Detail.scss';
 import OrderSummary from './OrderSummary';
 
@@ -8,20 +9,23 @@ function Detail() {
   const [productSize, setProductSize] = useState([{}]);
   const [productComposition, setProductComposition] = useState([{}]);
 
+  const params = useParams();
+  const urlById = params.id;
+
   useEffect(() => {
-    fetch('./data/product_detail.json')
+    fetch(`http://localhost:8000/products/detail/${urlById}`)
       .then(res => res.json())
       .then(res => setProductInfo(res));
-    fetch('./data/colors_table.json')
+    fetch('http://localhost:8000/products/detail/colors')
       .then(res => res.json())
       .then(res => setProductColor(res));
-    fetch('./data/sizes_table.json')
+    fetch('http://localhost:8000/products/detail/sizes')
       .then(res => res.json())
       .then(res => setProductSize(res));
-    fetch('./data/compositions_table.json')
+    fetch('http://localhost:8000/products/detail/compositions')
       .then(res => res.json())
       .then(res => setProductComposition(res));
-  }, []);
+  }, [urlById]);
 
   let priceAfter = Number(productInfo.price_after).toLocaleString() + '원';
   let priceBefore = Number(productInfo.price_before).toLocaleString() + '원';
