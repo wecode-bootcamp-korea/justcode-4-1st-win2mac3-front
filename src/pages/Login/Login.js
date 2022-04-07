@@ -36,8 +36,11 @@ function Login() {
       }),
     })
       .then(res => res.json())
-      .then(res => console.log(res));
-    console.log(formValues.email);
+      .then(res => {
+        if (res.jwt) {
+          localStorage.setItem('token', res.jwt);
+        }
+      });
   };
 
   useEffect(() => {
@@ -62,7 +65,7 @@ function Login() {
       errors.password = '아이디와 비밀번호를 다시 입력해주세요.';
       return errors;
     }
-    return navigate('');
+    return navigate('../products/detail/1');
   };
 
   return (

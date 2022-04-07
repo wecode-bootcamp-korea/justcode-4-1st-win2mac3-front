@@ -8,11 +8,22 @@ function Detail() {
   const [productColor, setProductColor] = useState([{}]);
   const [productSize, setProductSize] = useState([{}]);
   const [productComposition, setProductComposition] = useState([{}]);
+  const [user, setUser] = useState({});
 
   const params = useParams();
   const urlById = params.id;
 
+  const token = localStorage.getItem('token') || '';
+
   useEffect(() => {
+    fetch('http://localhost:8000/user/verify', {
+      headers: {
+        Authorization: token,
+      },
+    })
+      .then(res => res.json())
+      .then(res => setUser(res));
+
     fetch(`http://localhost:8000/products/detail/${urlById}`)
       .then(res => res.json())
       .then(res => setProductInfo(res));
@@ -25,7 +36,7 @@ function Detail() {
     fetch('http://localhost:8000/products/detail/compositions')
       .then(res => res.json())
       .then(res => setProductComposition(res));
-  }, [urlById]);
+  }, [token, urlById]);
 
   let priceAfter = Number(productInfo.price_after).toLocaleString() + '원';
   let priceBefore = Number(productInfo.price_before).toLocaleString() + '원';
@@ -84,6 +95,7 @@ function Detail() {
     if (orderSummary) {
       orderInfo.orderList.push({
         id: orderInfo.orderList[orderInfo.orderList.length - 1].id + 1,
+        user_id: user.user_id,
         product_id: productInfo.id,
         product_name: productInfo.name,
         color_id: currentColor[0].id,
@@ -146,11 +158,12 @@ function Detail() {
     productInfo.price_after,
     productSize,
     render,
+    user.user_id,
   ]);
 
   // console.log(totalPrice);
   // console.log(render);
-  // console.log(orderInfo.orderList);
+  console.log(orderInfo.orderList);
 
   const rerender = () => {
     render === 0 ? setRender(1) : setRender(0);
@@ -159,6 +172,16 @@ function Detail() {
   const countOut = id => {
     const newOrder = orderInfo.orderList.filter(obj => obj.id !== id);
     setOrderInfo({ orderList: newOrder });
+  };
+
+  const sendOrderForm = () => {
+    fetch('http://localhost:8000/cart/write', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(orderInfo.orderList),
+    }).then(res => res.json());
   };
 
   return (
@@ -268,7 +291,9 @@ function Detail() {
             <div className="buyBtnSection">
               <button className="buyBtn">구매하기</button>
               <div>
-                <button className="cartBtn">장바구니</button>
+                <button className="cartBtn" onClick={sendOrderForm}>
+                  장바구니
+                </button>
                 <button className="keepBtn">찜하기</button>
               </div>
             </div>
