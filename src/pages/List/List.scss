@@ -1,2 +1,82 @@
-@use "../../styles/common.scss";
-@import "../../styles/variables.scss";
+@use '../../styles/common.scss';
+@import '../../styles/variables.scss';
+
+.sub-page {
+  .sub-header {
+    width: 100%;
+    height: 250px;
+    background: #f4f4f4;
+  }
+  .content-wrap {
+    display: flex;
+    justify-content: space-between;
+  }
+  .sub-aside {
+    width: 15%;
+    min-width: 200px;
+    margin-right: 2.5%;
+    padding-top: 11px;
+    .category1-title {
+      font-size: $h3;
+      font-weight: $medium;
+      padding: 15px 0;
+      border-bottom: 2px solid $black;
+    }
+    .category2-list {
+      li {
+        padding: 14px 0;
+        border-bottom: 1px solid $lightGray;
+        color: $black;
+        &.category2-current {
+          color: $brandColor;
+          font-weight: $bold;
+        }
+      }
+    }
+  }
+  .sub-content {
+    width: 85%;
+    padding-top: 10px;
+    .sub-content-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding: 0 0 15px 0;
+      border-bottom: 1px solid $black;
+      .products-amount {
+        color: $darkGray;
+        font-size: $small;
+      }
+      .products-sort {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 140px;
+        height: 42px;
+        border: 1px solid #e8e8e8;
+        cursor: pointer;
+      }
+    }
+  }
+}
+.products-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  padding: 30px 0px 0px 0px;
+  .products-item {
+    width: 300px;
+
+    padding-right: 30px;
+    margin-bottom: 60px;
+    overflow: hidden;
+    &:last-child {
+      padding: 0;
+    }
+  }
+  .card-img-fake {
+    width: 300px;
+    height: 0px;
+  }
+}

@@ -1,2 +1,50 @@
-@use "../../styles/common.scss";
-@import "../../styles/variables.scss";
+@use '../../styles/common.scss';
+@import '../../styles/variables.scss';
+
+.mainBody {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .mainContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 120px;
+    .carouselBanner {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 100px;
+    }
+    .secondBanner {
+      margin-bottom: 250px;
+      table {
+        width: 100%;
+        tbody {
+          tr td {
+            width: 33%;
+            padding: 10px 20px;
+          }
+          .secondRow td {
+            font-size: 26px;
+            font-weight: 400;
+          }
+          .thirdRow td {
+            font-size: 18px;
+            color: rgba(128, 128, 128, 0.6);
+          }
+        }
+      }
+    }
+    .thirdBanner {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      .thirdBannerTitle {
+        font-size: 28px;
+        font-weight: 500;
+        letter-spacing: 5px;
+        padding-bottom: 50px;
+      }
+    }
+  }
+}

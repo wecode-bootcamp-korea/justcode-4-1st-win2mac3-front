@@ -8,6 +8,7 @@ import Signup from './pages/Signup/Signup';
 import Main from './pages/Main/Main';
 import List from './pages/List/List';
 import Detail from './pages/Detail/Detail';
+import Cart from './pages/Cart/Cart';
 
 function Router() {
   return (
@@ -17,8 +18,9 @@ function Router() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/main" element={<Main />} />
-        <Route path="/list" element={<List />} />
-        <Route path="/detail" element={<Detail />} />
+        <Route path="/products/:type" element={<List />} />
+        <Route path="/products/detail/:id" element={<Detail />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
       <Footer />
     </BrowserRouter>
