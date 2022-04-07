@@ -12,7 +12,7 @@ const ListContent = props => {
         setProducts(data);
       });
   }, []);
-  //console.log(products, props);
+
   console.log(props);
   //const titleType = props.title[props.type];
   return (
