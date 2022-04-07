@@ -2,13 +2,13 @@
 @import '../../styles/variables.scss';
 
 .carousel-wrap {
-  width: 1800px;
+  width: 1900px;
   position: relative;
   .carousel-btn {
     position: absolute;
     width: 50px;
-    height: 100px;
-    top: 147px;
+    height: 250px;
+    top: 80px;
     background: #fff;
     border: none;
     outline: none;
@@ -17,10 +17,10 @@
     z-index: 10;
     cursor: pointer;
     &.next {
-      right: -50px;
+      right: -60px;
     }
     &.prev {
-      left: -50px;
+      left: -60px;
     }
   }
 }
@@ -44,7 +44,7 @@
   }
 
   .carousel-item {
-    width: 320px;
+    width: 340px;
     overflow: hidden;
   }
 }

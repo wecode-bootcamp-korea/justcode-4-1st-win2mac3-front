@@ -26,8 +26,8 @@ const ProductCarousel = () => {
       carouselInner.current.style.transition = `all 0.6s ease-out`;
       setCurrentIndex(currentIndex + 1);
     } else {
-      setCurrentIndex(currentIndex - currentIndex);
       carouselInner.current.style.transition = `all 0s`;
+      setCurrentIndex(currentIndex - currentIndex);
     }
 
     //console.log(carouselInner.current.style.transform);
@@ -41,7 +41,7 @@ const ProductCarousel = () => {
       setCurrentIndex(currentIndex - 1);
     }
   }
-  const slideMovePx = -370 * (0 + currentIndex);
+  const slideMovePx = -390 * (0 + currentIndex);
 
   return (
     <div className="carousel-wrap">
