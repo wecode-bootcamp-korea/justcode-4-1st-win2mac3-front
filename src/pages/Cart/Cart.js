@@ -4,12 +4,24 @@ import './Cart.scss';
 function Cart() {
   const [orderList, setOrderList] = useState([]);
   // const [newOrderList, setNewOrderList] = useState([]);
+  const token = localStorage.getItem('token') || '';
+  const [user, setUser] = useState({});
 
   useEffect(() => {
-    fetch('./data/order_list_to_cart.json')
+    fetch('http://localhost:8000/user/verify', {
+      headers: {
+        Authorization: token,
+      },
+    })
+      .then(res => res.json())
+      .then(res => setUser(res));
+
+    fetch(`http://localhost:8000/cart/read/${user.user_id}`)
       .then(res => res.json())
       .then(res => setOrderList(res));
-  }, []);
+  }, [token, user.user_id]);
+
+  console.log(orderList);
 
   // useEffect(() => {
   //   orderList.shift();

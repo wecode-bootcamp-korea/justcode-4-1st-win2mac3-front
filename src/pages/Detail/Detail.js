@@ -36,7 +36,7 @@ function Detail() {
     fetch('http://localhost:8000/products/detail/compositions')
       .then(res => res.json())
       .then(res => setProductComposition(res));
-  }, [urlById]);
+  }, [token, urlById]);
 
   let priceAfter = Number(productInfo.price_after).toLocaleString() + '원';
   let priceBefore = Number(productInfo.price_before).toLocaleString() + '원';
@@ -174,6 +174,16 @@ function Detail() {
     setOrderInfo({ orderList: newOrder });
   };
 
+  const sendOrderForm = () => {
+    fetch('http://localhost:8000/cart/write', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(orderInfo.orderList),
+    }).then(res => res.json());
+  };
+
   return (
     <div className="detailBody">
       <div className="detailWrapper">
@@ -281,7 +291,9 @@ function Detail() {
             <div className="buyBtnSection">
               <button className="buyBtn">구매하기</button>
               <div>
-                <button className="cartBtn">장바구니</button>
+                <button className="cartBtn" onClick={sendOrderForm}>
+                  장바구니
+                </button>
                 <button className="keepBtn">찜하기</button>
               </div>
             </div>
