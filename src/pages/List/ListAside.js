@@ -24,7 +24,15 @@ const ListAside = props => {
   return (
     <aside className="sub-aside">
       <p className="category1-title">{titleType}</p>
-      {sub1Category && (
+      <ul className="category2-list">
+        {titleType === '침구' && (
+          <li className="category2-current">
+            <Link to="#">차렵이불</Link>
+          </li>
+        )}
+      </ul>
+      {/*추후 기능 추가
+      sub1Category && (
         <ul className="category2-list">
           <li>
             <Link to="#">차렵이불</Link>
@@ -33,7 +41,7 @@ const ListAside = props => {
             <Link to="#">패드 | 토퍼</Link>
           </li>
         </ul>
-      )}
+      )*/}
     </aside>
   );
 };

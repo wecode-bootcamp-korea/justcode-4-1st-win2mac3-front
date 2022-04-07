@@ -2,19 +2,19 @@
   {
     "sub2_id": 1,
     "sub2_name": "차렵이불",
-    "sub2_url": "/blanket1",
+    "sub2_url": "/products/bed/blanket1",
     "mother_category_id": 1
   },
   {
     "sub2_id": 2,
     "sub2_name": "이불커버",
-    "sub2_url": "/blanket2",
+    "sub2_url": "/products/bed/blanket2",
     "mother_category_id": 1
   },
   {
     "sub2_id": 3,
     "sub2_name": "패드 | 토퍼",
-    "sub2_url": "/blanket3",
+    "sub2_url": "/products/bed/blanket3",
     "mother_category_id": 1
   }
 ]
