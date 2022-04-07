@@ -10,14 +10,16 @@ const typeByTitle = {
   best: 'BEST',
   bed: '침구',
 };
+
 const List = () => {
   const params = useParams();
   const urlType = params.type;
+  const bannerUrl = `http://3000:localhost/images/banner/${urlType}-banner.png`;
 
   return (
     <article className="sub-page">
       <div className="sub-header">
-        <img src="#" alt="#" />
+        <img src={bannerUrl} alt={urlType} />
       </div>
       <div className="content-wrap list-wrap">
         <ListAside type={urlType} title={typeByTitle} />

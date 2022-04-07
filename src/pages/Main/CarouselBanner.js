@@ -70,11 +70,11 @@ function CarouselBanner() {
           className="firstCarouselContainer"
           style={{ transform: `translateX(-${slideSpot}px)` }}
         >
-          <img src="./images/banner/ex0.jpg" alt="" />
-          <img src="./images/banner/ex1.jpg" alt="" />
-          <img src="./images/banner/ex2.jpg" alt="" />
-          <img src="./images/banner/ex3.jpg" alt="" />
-          <img src="./images/banner/ex0.jpg" alt="" />
+          <img src="./images/banner/main-banner-0.png" alt="mainBanner0" />
+          <img src="./images/banner/main-banner-1.png" alt="mainBanner1" />
+          <img src="./images/banner/main-banner-2.png" alt="mainBanner2" />
+          <img src="./images/banner/main-banner-3.png" alt="mainBanner3" />
+          <img src="./images/banner/main-banner-0.png" alt="mainBanner0" />
         </div>
       </div>
       <div className="sideButtonBox">

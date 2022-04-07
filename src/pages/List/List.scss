@@ -4,8 +4,10 @@
 .sub-page {
   .sub-header {
     width: 100%;
-    height: 250px;
-    background: #f4f4f4;
+    height: 340px;
+    img {
+      width: 100%;
+    }
   }
   .content-wrap {
     display: flex;
