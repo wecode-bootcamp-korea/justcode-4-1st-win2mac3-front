@@ -8,6 +8,7 @@ import './List.scss';
 const typeByTitle = {
   new: '신상품',
   best: 'BEST',
+  bed: '침구',
 };
 const List = () => {
   const params = useParams();
