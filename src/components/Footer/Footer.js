@@ -26,27 +26,27 @@ function Footer() {
         <li className="icon-list">
           <ol>
             <Link to="">
-              <i class="fa-brands fa-instagram" />
+              <i className="fa-brands fa-instagram" />
             </Link>
           </ol>
           <ol>
             <Link to="">
-              <i class="fa-brands fa-instagram-square" />
+              <i className="fa-brands fa-instagram-square" />
             </Link>
           </ol>
           <ol>
             <Link to="">
-              <i class="fa-brands fa-facebook" />
+              <i className="fa-brands fa-facebook" />
             </Link>
           </ol>
           <ol>
             <Link to="">
-              <i class="fa-solid fa-blog" />
+              <i className="fa-solid fa-blog" />
             </Link>
           </ol>
           <ol>
             <Link to="">
-              <i class="fa-brands fa-youtube" />
+              <i className="fa-brands fa-youtube" />
             </Link>
           </ol>
         </li>
