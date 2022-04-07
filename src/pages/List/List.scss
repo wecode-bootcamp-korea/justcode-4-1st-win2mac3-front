@@ -3,7 +3,7 @@
 
 .sub-page {
   .sub-header {
-    width: $parentWidth;
+    width: 100%;
     height: 250px;
     background: #f4f4f4;
   }
@@ -35,7 +35,7 @@
     }
   }
   .sub-content {
-    width: calc(100% - 15%);
+    width: 85%;
     padding-top: 10px;
     .sub-content-head {
       display: flex;
@@ -61,11 +61,12 @@
 }
 .products-list {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  max-width: $maxWidth;
-  padding: 30px 0;
+  width: 100%;
+  padding: 30px 0px 0px 0px;
   .products-item {
-    width: columns(5);
+    width: 300px;
 
     padding-right: 30px;
     margin-bottom: 60px;
@@ -73,5 +74,9 @@
     &:last-child {
       padding: 0;
     }
+  }
+  .card-img-fake {
+    width: 300px;
+    height: 0px;
   }
 }

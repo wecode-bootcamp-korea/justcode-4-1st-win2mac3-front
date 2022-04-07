@@ -41,7 +41,7 @@ const ProductCarousel = () => {
       setCurrentIndex(currentIndex - 1);
     }
   }
-  const slideMovePx = -260 * (0 + currentIndex);
+  const slideMovePx = -370 * (0 + currentIndex);
 
   return (
     <div className="carousel-wrap">
