@@ -79,10 +79,10 @@ function CarouselBanner() {
       </div>
       <div className="sideButtonBox">
         <button className="prevBtn" onClick={slideToPrev}>
-          <i class="fa-solid fa-angle-left" />
+          <i className="fa-solid fa-angle-left" />
         </button>
         <button className="nextBtn" onClick={slideToNext}>
-          <i class="fa-solid fa-angle-right" />
+          <i className="fa-solid fa-angle-right" />
         </button>
       </div>
       <div className="playAndPauseButtonBox">
