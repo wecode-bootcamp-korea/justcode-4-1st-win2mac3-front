@@ -17,11 +17,10 @@ const ProductCarousel = () => {
         setProducts(data);
       });
   }, []);
-  useEffect(() => {
-    console.log(`currentIndex:${currentIndex}`);
-    //console.log(products.length);
-  }, [currentIndex]);
-
+  // useEffect(() => {
+  //   // console.log(`currentIndex:${currentIndex}`);
+  //   // console.log(products.length);
+  // }, [currentIndex]);
   function handleSwipeRight() {
     // carouselInner.current.style.transition = `all 0.6s ease-out`;
     // setCurrentIndex((currentIndex + 1) % products.length);
@@ -44,7 +43,7 @@ const ProductCarousel = () => {
       setCurrentIndex(currentIndex - 1);
     }
   }
-  const slideMovePx = -260 * (0 + currentIndex);
+  const slideMovePx = -370 * (0 + currentIndex);
 
   return (
     <div className="carousel-wrap">

@@ -1,0 +1,52 @@
+.firstCarouselWrapper {
+  width: 1900px;
+  height: 680px;
+  overflow: hidden;
+  .sideButtonBox {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+    top: -390px;
+    z-index: 1;
+    button {
+      width: 100px;
+      height: 100px;
+      border: 0px;
+      background-color: transparent;
+      color: white;
+      opacity: 50%;
+      font-size: 50px;
+      cursor: pointer;
+    }
+  }
+  .playAndPauseButtonBox {
+    display: flex;
+    justify-content: right;
+    width: 100%;
+    position: relative;
+    top: -200px;
+    right: 0px;
+    z-index: 2;
+    .playAndPauseBtn {
+      width: 100px;
+      height: 100px;
+      border: 0px;
+      background-color: transparent;
+      color: white;
+      opacity: 50%;
+      font-size: 48px;
+      cursor: pointer;
+    }
+  }
+
+  .firstCarouselContainer {
+    display: flex;
+    flex-direction: row;
+    transition: all 1s;
+    transition-timing-function: ease;
+    img {
+      width: 100%;
+    }
+  }
+}

@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 import { faCaretDown, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
@@ -33,4 +32,5 @@ const Header = () => {
     </div>
   );
 };
+
 export { Header };
