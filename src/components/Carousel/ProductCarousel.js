@@ -19,23 +19,26 @@ const ProductCarousel = () => {
   }, []);
   useEffect(() => {
     console.log(`currentIndex:${currentIndex}`);
-    console.log(products.length);
+    //console.log(products.length);
   }, [currentIndex]);
+
   function handleSwipeRight() {
-    if (currentIndex <= products.length) {
+    // carouselInner.current.style.transition = `all 0.6s ease-out`;
+    // setCurrentIndex((currentIndex + 1) % products.length);
+    if (currentIndex < products.length) {
       carouselInner.current.style.transition = `all 0.6s ease-out`;
       setCurrentIndex(currentIndex + 1);
     } else {
-      setCurrentIndex(currentIndex - currentIndex);
       carouselInner.current.style.transition = `all 0s`;
+      console.log(currentIndex);
+      setCurrentIndex(0);
     }
-
     //console.log(carouselInner.current.style.transform);
   }
   function handleSwipeLeft() {
     if (currentIndex <= 0) {
       carouselInner.current.style.transition = `all 0s`;
-      setCurrentIndex(products.length);
+      setCurrentIndex(products.length - 1);
     } else {
       carouselInner.current.style.transition = `all 0.6s ease-out`;
       setCurrentIndex(currentIndex - 1);

@@ -28,7 +28,7 @@ const ListContent = props => {
       </div>
       <div className="products-list">
         {products.map(list => (
-          <Card key={list.id} list={list} className="products-item" />
+          <Card key={list.id} list={list} classProp="products-item" />
         ))}
       </div>
     </section>
