@@ -18,13 +18,14 @@ const ProductCarousel = () => {
       });
   }, []);
   // useEffect(() => {
-  //   // console.log(`currentIndex:${currentIndex}`);
+  //   console.log(`useEffect: currentIndex:${currentIndex}`);
   //   // console.log(products.length);
   // }, [currentIndex]);
   function handleSwipeRight() {
-    if (currentIndex <= products.length) {
+    if (currentIndex < products.length) {
       carouselInner.current.style.transition = `all 0.6s ease-out`;
       setCurrentIndex(currentIndex + 1);
+      //console.log(`if문 1: ${currentIndex}`);
     } else {
       setCurrentIndex(currentIndex - currentIndex);
       carouselInner.current.style.transition = `all 0s`;
