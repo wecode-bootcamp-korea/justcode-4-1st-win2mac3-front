@@ -11,16 +11,13 @@ const ProductCarousel = () => {
   const carouselInner = useRef();
 
   useEffect(() => {
-    fetch(`http://localhost:3000/data/productsData.json`, { method: 'GET' })
+    fetch(`http://localhost:8000/products/alllist`, { method: 'GET' })
       .then(res => res.json())
       .then(data => {
         setProducts(data);
       });
   }, []);
-  // useEffect(() => {
-  //   // console.log(`currentIndex:${currentIndex}`);
-  //   // console.log(products.length);
-  // }, [currentIndex]);
+
   function handleSwipeRight() {
     if (currentIndex <= products.length) {
       carouselInner.current.style.transition = `all 0.6s ease-out`;
@@ -29,8 +26,6 @@ const ProductCarousel = () => {
       carouselInner.current.style.transition = `all 0s`;
       setCurrentIndex(currentIndex - currentIndex);
     }
-
-    //console.log(carouselInner.current.style.transform);
   }
   function handleSwipeLeft() {
     if (currentIndex <= 0) {
@@ -50,11 +45,7 @@ const ProductCarousel = () => {
           className="carousel-inner"
           ref={carouselInner}
           style={{
-            transform: `translateX(${
-              //left 값으로 -만큼 이동해야 해서 음수로 만들어줌.
-              slideMovePx
-              //0.5 + currentIndex면 아이템의 반절만큼 이동
-            }px)`,
+            transform: `translateX(${slideMovePx}px)`,
           }}
         >
           {products.map(list => (
