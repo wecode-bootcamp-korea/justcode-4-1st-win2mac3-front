@@ -8,6 +8,8 @@ const Card = list => {
   const navigate = useNavigate();
   const listData = list.list;
 
+  console.log(listData);
+
   const priceAfter = Number(listData.price_after).toLocaleString() + '원';
   const priceBefore = Number(listData.price_before).toLocaleString() + '원';
   const discountRate =
@@ -39,12 +41,12 @@ const Card = list => {
             >
               <FontAwesomeIcon icon={faHeart} />
             </button>
-            <Link className="card-img" to={`/products/` + listData.id}>
+            <Link className="card-img" to={`/products/detail/` + listData.id}>
               <img src={listData.image_url} alt={listData.name} />
             </Link>
           </div>
         </div>
-        <Link className="card-name" to={`/products/` + listData.id}>
+        <Link className="card-name" to={`/products/detail/` + listData.id}>
           {listData.name}
         </Link>
         <p className="card-price">
