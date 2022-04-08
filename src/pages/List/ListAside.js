@@ -7,12 +7,14 @@ const ListAside = props => {
   const type = props.type;
 
   useEffect(() => {
-    fetch(`http://localhost:3000/data/sub1CategoryData.json`, { method: 'GET' })
+    fetch(`http://localhost:8000/products/onesubbestsell/1`, { method: 'GET' })
       .then(res => res.json())
       .then(data => {
         setSub1Category(data);
       });
-    fetch(`http://localhost:3000/data/sub2CategoryData.json`, { method: 'GET' })
+    fetch(`http://localhost:3000/products/twosubbestsell/2`, {
+      method: 'GET',
+    })
       .then(res => res.json())
       .then(data => {
         setSub2Category(data);
@@ -27,7 +29,7 @@ const ListAside = props => {
       <ul className="category2-list">
         {titleType === '침구' && (
           <li className="category2-current">
-            <Link to="#">차렵이불</Link>
+            <Link to="/products/bed">차렵이불</Link>
           </li>
         )}
       </ul>

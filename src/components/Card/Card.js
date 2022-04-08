@@ -17,7 +17,7 @@ const Card = list => {
     alert('로그인 후 이용 가능한 서비스입니다.');
     navigate('/login');
   };
-  console.log(listData);
+
   return (
     <div className={list.classProp}>
       <div className="card-wrap">
@@ -39,12 +39,15 @@ const Card = list => {
             >
               <FontAwesomeIcon icon={faHeart} />
             </button>
-            <Link className="card-img" to={`/detail/item/` + listData.id}>
+            <Link
+              className="card-img"
+              to={`/products/detail/item/` + listData.id}
+            >
               <img src={listData.image_url} alt={listData.name} />
             </Link>
           </div>
         </div>
-        <Link className="card-name" to={`/detail/item/` + listData.id}>
+        <Link className="card-name" to={`/products/detail/item/` + listData.id}>
           {listData.name}
         </Link>
         <p className="card-price">
