@@ -2,7 +2,7 @@
 @import '../../styles/variables.scss';
 
 .error {
-  color:#f00;
+  color: #f00;
 }
 
 .path {
@@ -68,7 +68,7 @@
   margin-right: 20px;
   font-size: 14px;
   font-weight: 400;
-  color:#2b2b2b;
+  color: #2b2b2b;
 }
 
 .input-field input {
@@ -79,7 +79,9 @@
 }
 
 .input-field #id,
-#password, #pw-check, #username {
+#password,
+#pw-check,
+#username {
   margin-right: 10px;
 }
 
@@ -95,7 +97,7 @@
 
 .input-field .condition {
   font-size: 14px;
-  color: #888888
+  color: #888888;
 }
 
 .address {
@@ -118,7 +120,7 @@
   cursor: pointer;
 }
 
-.address input[type="text"]::placeholder{
+.address input[type='text']::placeholder {
   padding-left: 15px;
   color: rgb(192, 192, 192);
 }
@@ -137,15 +139,14 @@
 #mobile {
   padding: 10px 55px 10px 10px;
   border-radius: 4px;
-  border : 1px solid rgb(0, 0, 0, 0.2)
+  border: 1px solid rgb(0, 0, 0, 0.2);
 }
 
-#number option {
-  
-}
-
-.mobile-wrap .num {
-  margin: 0;
+.mobile-wrap {
+  display: flex;
+  .num {
+    margin: 0;
+  }
 }
 
 .dash {
@@ -175,7 +176,7 @@
   align-items: center;
 }
 
-.dob-wrap .num{
+.dob-wrap .num {
   padding: 12px 0px;
 }
 
@@ -199,7 +200,7 @@
   align-items: center;
 }
 
-.main-content{
+.main-content {
   font-size: 14px;
   font-weight: 500;
 }
@@ -208,7 +209,7 @@
   font-size: 14px;
 }
 
-.content span{
+.content span {
   color: #a6a6a6;
 }
 
