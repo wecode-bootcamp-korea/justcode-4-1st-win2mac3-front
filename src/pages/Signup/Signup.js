@@ -88,7 +88,7 @@ function Signup() {
       errors.username = '이름이 형식에 맞지 않습니다.';
       return errors;
     }
-    return navigate('/login');
+    return navigate('../login');
   };
   return (
     <div>

@@ -6,12 +6,29 @@ import { Card } from '../../components/Card/Card';
 const ListContent = props => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:8000/products/allbestsell', { method: 'GET' })
-      .then(res => res.json())
-      .then(data => {
-        setProducts(data);
-      });
-  }, []);
+    if (props.type === 'bed') {
+      fetch('http://localhost:8000/products/alllist', { method: 'GET' })
+        .then(res => res.json())
+        .then(data => {
+          setProducts(data);
+        });
+    } else if (props.type === 'best') {
+      fetch('http://localhost:8000/products/allbestsell', { method: 'GET' })
+        .then(res => res.json())
+        .then(data => {
+          setProducts(data);
+        });
+    } else if (props.type === 'new') {
+      fetch('http://localhost:8000/products/allnewsell', { method: 'GET' })
+        .then(res => res.json())
+        .then(data => {
+          setProducts(data);
+          console.log(products);
+        });
+    }
+  }, [props.type]);
+
+  console.log(products);
   //const titleType = props.title[props.type];
   return (
     <section className="sub-content">

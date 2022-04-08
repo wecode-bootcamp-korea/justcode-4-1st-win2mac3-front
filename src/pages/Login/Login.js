@@ -11,6 +11,7 @@ function Login() {
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
+  const [token, setToken] = useState(0);
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -65,7 +66,7 @@ function Login() {
       errors.password = '아이디와 비밀번호를 다시 입력해주세요.';
       return errors;
     }
-    return navigate('../products/detail/1');
+    navigate('../main');
   };
 
   return (
