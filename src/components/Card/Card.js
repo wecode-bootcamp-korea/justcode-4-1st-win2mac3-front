@@ -39,12 +39,12 @@ const Card = list => {
             >
               <FontAwesomeIcon icon={faHeart} />
             </button>
-            <Link className="card-img" to={`/products/` + listData.id}>
+            <Link className="card-img" to={`/detail/` + listData.id}>
               <img src={listData.image_url} alt={listData.name} />
             </Link>
           </div>
         </div>
-        <Link className="card-name" to={`/products/` + listData.id}>
+        <Link className="card-name" to={`/detail/` + listData.id}>
           {listData.name}
         </Link>
         <p className="card-price">
