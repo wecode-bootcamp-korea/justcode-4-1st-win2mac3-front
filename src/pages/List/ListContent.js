@@ -18,15 +18,16 @@ const ListContent = props => {
         .then(data => {
           setProducts(data);
         });
-    } else {
+    } else if (props.type === 'new') {
       fetch('http://localhost:8000/products/allnewsell', { method: 'GET' })
         .then(res => res.json())
         .then(data => {
           setProducts(data);
+          console.log(products);
         });
     }
-  }, []);
-  console.log(props);
+  }, [props.type]);
+
   console.log(products);
   //const titleType = props.title[props.type];
   return (

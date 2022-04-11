@@ -7,14 +7,12 @@ const ListAside = props => {
   const type = props.type;
 
   useEffect(() => {
-    fetch(`http://localhost:8000/products/onesubbestsell/1`, { method: 'GET' })
+    fetch(`http://localhost:8000/products/onesublist/1`, { method: 'GET' })
       .then(res => res.json())
       .then(data => {
         setSub1Category(data);
       });
-    fetch(`http://localhost:3000/products/twosubbestsell/2`, {
-      method: 'GET',
-    })
+    fetch(`http://localhost:8000/products/onesublist/1`, { method: 'GET' })
       .then(res => res.json())
       .then(data => {
         setSub2Category(data);
