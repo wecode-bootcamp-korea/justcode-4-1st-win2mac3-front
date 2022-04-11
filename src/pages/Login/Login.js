@@ -11,7 +11,6 @@ function Login() {
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
-  const [token, setToken] = useState(0);
 
   const handleChange = e => {
     const { name, value } = e.target;
