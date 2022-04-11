@@ -12,7 +12,7 @@ const Header = () => {
       </p>
       <ul className="user-service">
         <li className="user-cart">
-          <Link to="#">
+          <Link to="/cart">
             <FontAwesomeIcon icon={faShoppingBag} />
           </Link>
         </li>

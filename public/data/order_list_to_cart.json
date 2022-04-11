@@ -1,14 +1,16 @@
 [
   {
+    "id": 1,
     "color_name": "옐로우",
     "composition_name": "차렵이불",
     "price": 79900,
     "product_name": "드리밍 고밀도 60수 바이오워싱 차렵이불",
-    "quantity": 1,
+    "quantity": 2,
     "size_name": "SS",
     "image_url": "./images/product/product01.jpg"
   },
   {
+    "id": 2,
     "color_name": "화이트",
     "composition_name": "이불세트",
     "price": 117800,

@@ -1,20 +1,66 @@
 import React, { useState, useEffect } from 'react';
 import './Cart.scss';
+import CartCard from './CartCard';
 
 function Cart() {
   const [orderList, setOrderList] = useState([]);
   // const [newOrderList, setNewOrderList] = useState([]);
+  const token = localStorage.getItem('token') || '';
+  const [user, setUser] = useState({});
+  const [render, setRender] = useState(0);
 
   useEffect(() => {
-    fetch('./data/order_list_to_cart.json')
+    fetch('http://localhost:8000/user/verify', {
+      headers: {
+        Authorization: token,
+      },
+    })
+      .then(res => res.json())
+      .then(res => setUser(res));
+
+    fetch(`http://localhost:8000/cart/read/${user.user_id}`)
       .then(res => res.json())
       .then(res => setOrderList(res));
-  }, []);
+  }, [token, user.user_id, render]);
 
-  // useEffect(() => {
-  //   orderList.shift();
-  //   setNewOrderList(orderList);
-  // }, [orderList]);
+  console.log(orderList);
+
+  const deleteItem = id => {
+    fetch(`http://localhost:8000/cart/delete/${id}`).then(res => res.json);
+    rerender();
+  };
+
+  const quantityMinus = (id, quantity) => {
+    fetch('http://localhost:8000/cart/quantityminus', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id: id,
+        quantity: quantity,
+      }),
+    }).then(res => res.json);
+    rerender();
+  };
+
+  const quantityPlus = (id, quantity) => {
+    fetch('http://localhost:8000/cart/quantityplus', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id: id,
+        quantity: quantity,
+      }),
+    }).then(res => res.json);
+    rerender();
+  };
+
+  const rerender = () => {
+    render === 0 ? setRender(1) : setRender(0);
+  };
 
   const totalPrice = orderList
     .map(order => order.price * order.quantity)
@@ -49,25 +95,13 @@ function Cart() {
                 </thead>
                 <tbody>
                   {orderList.map(order => (
-                    <tr key={order.id}>
-                      <td>
-                        <img src={order.image_url} alt="" />
-                      </td>
-                      <td>
-                        <h3>{order.product_name}</h3>
-                        <span>
-                          -{order.color_name}/{order.size_name}/
-                          {order.composition_name}
-                        </span>
-                      </td>
-                      <td className="itemQuantity">{order.quantity}</td>
-                      <td className="itemPrice">
-                        {Number(order.price * order.quantity).toLocaleString() +
-                          '원'}
-                      </td>
-                      <td>무료배송</td>
-                      <td>삭제</td>
-                    </tr>
+                    <CartCard
+                      key={order.id}
+                      order={order}
+                      deleteItem={deleteItem}
+                      quantityMinus={quantityMinus}
+                      quantityPlus={quantityPlus}
+                    />
                   ))}
                 </tbody>
               </table>

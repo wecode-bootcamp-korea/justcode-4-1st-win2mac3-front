@@ -10,15 +10,23 @@ const typeByTitle = {
   best: 'BEST',
   bed: '침구',
 };
+
 const List = () => {
   const params = useParams();
   const urlType = params.type;
+  function imgBanner(urlType) {
+    if (urlType === 'new') {
+      return <img src="/images/banner/new-banner.png" alt={urlType} />;
+    } else if (urlType === 'best') {
+      return <img src="/images/banner/best-banner.png" alt={urlType} />;
+    } else {
+      return <img src="/images/banner/bed-banner.png" alt={urlType} />;
+    }
+  }
 
   return (
     <article className="sub-page">
-      <div className="sub-header">
-        <img src="#" alt="#" />
-      </div>
+      <div className="sub-header">{imgBanner(urlType)}</div>
       <div className="content-wrap list-wrap">
         <ListAside type={urlType} title={typeByTitle} />
         <ListContent type={urlType} />
