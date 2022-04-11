@@ -43,14 +43,12 @@ const Card = list => {
             </button>
 
             <Link className="card-img" to={`/products/detail/` + listData.id}>
-
               <img src={listData.image_url} alt={listData.name} />
             </Link>
           </div>
         </div>
 
         <Link className="card-name" to={`/products/detail/` + listData.id}>
-
           {listData.name}
         </Link>
         <p className="card-price">
