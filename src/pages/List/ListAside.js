@@ -27,7 +27,7 @@ const ListAside = props => {
       <ul className="category2-list">
         {titleType === '침구' && (
           <li className="category2-current">
-            <Link to="#">차렵이불</Link>
+            <Link to="/products/bed">차렵이불</Link>
           </li>
         )}
       </ul>
