@@ -12,7 +12,6 @@ function Detail() {
 
   const params = useParams();
   const urlById = params.id;
-
   const token = localStorage.getItem('token') || '';
 
   useEffect(() => {
