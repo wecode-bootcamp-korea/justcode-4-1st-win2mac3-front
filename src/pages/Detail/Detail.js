@@ -24,7 +24,7 @@ function Detail() {
       .then(res => res.json())
       .then(res => setUser(res));
 
-    fetch(`http://localhost:8000/products/detail/item/${urlById}`)
+    fetch(`http://localhost:8000/products/detail/${urlById}`)
       .then(res => res.json())
       .then(res => setProductInfo(res));
     fetch('http://localhost:8000/products/detail/colors')
