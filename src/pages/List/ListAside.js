@@ -18,9 +18,9 @@ const ListAside = props => {
         setSub2Category(data);
       });
   }, []);
-  //console.log(sub1Category);
+
   const titleType = props.title[props.type];
-  //console.log(titleType);
+
   return (
     <aside className="sub-aside">
       <p className="category1-title">{titleType}</p>
@@ -34,11 +34,8 @@ const ListAside = props => {
       {/*추후 기능 추가
       sub1Category && (
         <ul className="category2-list">
-          <li>
-            <Link to="#">차렵이불</Link>
-          </li>
           <li className="category2-current">
-            <Link to="#">패드 | 토퍼</Link>
+            <Link to="/products/bed">차렵이불</Link>
           </li>
         </ul>
       )*/}
