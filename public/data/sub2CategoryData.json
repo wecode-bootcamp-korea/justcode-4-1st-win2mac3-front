@@ -2,11 +2,7 @@
   {
     "sub2_id": 1,
     "sub2_name": "차렵이불",
-<<<<<<< HEAD
-    "sub2_url": "/products/bed",
-=======
     "sub2_url": "/products/bed/blanket1",
->>>>>>> b2d23efb0c895bc985df1337b45c9e18ab2193df
     "mother_category_id": 1
   },
   {
