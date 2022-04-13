@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Header } from './Header';
@@ -9,7 +9,8 @@ import './Nav.scss';
 
 const Nav = () => {
   let [clicked, setClicked] = useState(false);
-  function handleCategory(e) {
+
+  function handleCategory() {
     !clicked ? setClicked(true) : setClicked(false);
   }
 

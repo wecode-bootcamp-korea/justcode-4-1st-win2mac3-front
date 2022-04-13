@@ -23,13 +23,10 @@ const ListContent = props => {
         .then(res => res.json())
         .then(data => {
           setProducts(data);
-          console.log(products);
         });
     }
   }, [props.type]);
 
-  console.log(products);
-  //const titleType = props.title[props.type];
   return (
     <section className="sub-content">
       <div className="sub-content-head">
