@@ -12,7 +12,6 @@ function Signup() {
   };
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
-  const [isSubmit, setIsSubmit] = useState(false);
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -21,8 +20,14 @@ function Signup() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    setFormErrors(validate(formValues));
-    setIsSubmit(true);
+    const errors = validate(formValues);
+    if (!errors) {
+      alert('회원가입 완료');
+      navigate('../login');
+      return;
+    }
+    setFormErrors(errors);
+    // setIsSubmit(true);
     sendForm(formValues);
   };
 
@@ -42,48 +47,61 @@ function Signup() {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (Object.keys(formErrors).length === 0 && isSubmit) {
+  const emailValidation = (email, errors) => {
+    const emailRegex =
+      /^([0-9a-zA-Z_.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+
+    if (!email) {
+      errors.email = '아이디를 입력해주세요.';
+    } else if (!emailRegex.test(email)) {
+      errors.email = '아이디 형식이 맞지 않습니다.';
     }
-  }, [formErrors, isSubmit]);
+    return errors;
+  };
+
+  const passwordValidation = (password, errors) => {
+    const pwRegex =
+      /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+
+    if (!password) {
+      errors.password = '비밀번호를 입력해주세요.';
+    } else if (
+      password.length < 8 ||
+      password.length > 16 ||
+      !pwRegex.test(password)
+    ) {
+      errors.password = '아이디와 비밀번호를 다시 입력해주세요.';
+    }
+    return errors;
+  };
+
+  const passwordCheckValidation = (password, passwordcheck, errors) => {
+    if (password !== passwordcheck) {
+      errors.passwordcheck = '비밀번호가 일치하지 않습니다.';
+    }
+    return errors;
+  };
+
+  const userNameValidation = (username, errors) => {
+    if (!username) {
+      errors.username = '이름을 입력해주세요.';
+    } else if (username.length < 2 || username.length > 5) {
+      errors.username = '이름이 형식에 맞지 않습니다.';
+    }
+    return errors;
+  };
 
   const validate = values => {
     const errors = {};
-    const emailRegex =
-      /^([0-9a-zA-Z_.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
-    const pwRegex =
-      /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
-    if (!values.email) {
-      errors.email = '아이디를 입력해주세요.';
-      return errors;
-    } else if (!emailRegex.test(values.email)) {
-      errors.email = '아이디가 형식에 맞지 않습니다.';
-      return errors;
-    } else if (!values.password) {
-      errors.password = '비밀번호를 입력해주세요.';
-      return errors;
-    } else if (
-      values.password.length < 8 ||
-      values.password.length > 16 ||
-      !pwRegex.test(values.password)
-    ) {
-      errors.password = '비밀번호가 형식에 맞지 않습니다.';
-      return errors;
-    }
-    if (values.password !== values.passwordcheck) {
-      errors.passwordcheck = '비밀번호가 일치하지 않습니다.';
-      return errors;
-    }
-    if (!values.username) {
-      errors.username = '이름을 입력해주세요.';
-      return errors;
-    } else if (values.username.length < 2 || values.username.length > 5) {
-      errors.username = '이름이 형식에 맞지 않습니다.';
-      return errors;
-    }
-    alert('회원가입 완료');
-    return navigate('../login');
+
+    emailValidation(values.email, errors);
+    passwordValidation(values.password, errors);
+    passwordCheckValidation(values.password, values.passwordcheck, errors);
+    userNameValidation(values.username, errors);
+
+    return null;
   };
+  
   return (
     <div className="sign-up-wrapper">
       <form className="sign-up" onSubmit={handleSubmit}>

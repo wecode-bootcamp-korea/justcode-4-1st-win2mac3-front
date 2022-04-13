@@ -17,14 +17,13 @@ const ProductCarousel = () => {
         setProducts(data);
       });
   }, []);
-
   function handleSwipeRight() {
-    if (currentIndex <= products.length) {
+    if (currentIndex < products.length) {
       carouselInner.current.style.transition = `all 0.6s ease-out`;
       setCurrentIndex(currentIndex + 1);
     } else {
       carouselInner.current.style.transition = `all 0s`;
-      setCurrentIndex(currentIndex - currentIndex);
+      setCurrentIndex(0);
     }
   }
   function handleSwipeLeft() {

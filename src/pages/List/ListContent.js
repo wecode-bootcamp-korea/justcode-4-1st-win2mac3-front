@@ -27,7 +27,6 @@ const ListContent = props => {
     }
   }, [props.type]);
 
-  //const titleType = props.title[props.type];
   return (
     <section className="sub-content">
       <div className="sub-content-head">
