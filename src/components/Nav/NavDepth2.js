@@ -4,6 +4,7 @@ import { MenuLink, ProductLink } from './Links.js';
 const NavDepth2 = show => {
   const [pageCategory, setPageCategory] = useState([]);
   const [sub1Category, setSub1Category] = useState([]);
+  const [number, setNumber] = useState(1);
 
   useEffect(() => {
     fetch('http://localhost:3000/data/pageCategoryData.json', { method: 'GET' })
@@ -18,6 +19,7 @@ const NavDepth2 = show => {
       .then(data => {
         setSub1Category(data);
       });
+    setNumber(5);
   }, []);
 
   return (
