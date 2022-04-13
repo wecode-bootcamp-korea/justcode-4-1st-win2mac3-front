@@ -8,9 +8,9 @@ function Login() {
     email: '',
     password: '',
   };
+
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
-  const [isSubmit, setIsSubmit] = useState(false);
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -19,8 +19,13 @@ function Login() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    setFormErrors(validate(formValues));
-    setIsSubmit(true);
+    const errors = validate(formValues);
+    if (!errors) {
+      navigate('/main');
+      return;
+    }
+    setFormErrors(errors);
+    // setIsSubmit(true);
     sendForm(formValues);
   };
 
@@ -43,29 +48,39 @@ function Login() {
       });
   };
 
-  useEffect(() => {
-    if (Object.keys(formErrors).length === 0 && isSubmit) {
-    }
-  }, [formErrors, isSubmit]);
+  // useEffect(() => {
+  //   if (Object.keys(formErrors).length === 0 && isSubmit) {
+  //   }
+  //   setFormErrors(errors);
+  // })
 
   const navigate = useNavigate();
 
+  const emailValidation = (email, errors) => {
+    if (!email) {
+      errors.email = '아이디를 입력해주세요.';
+    } else if (!email.includes('@')) {
+      errors.email = '아이디 형식이 맞지 않습니다.';
+    }
+    return errors;
+  };
+
+  const passwordValidation = (password, errors) => {
+    if (!password) {
+      errors.password = '비밀번호를 입력해주세요.';
+    } else if (password.length < 8 || password.length > 16) {
+      errors.password = '아이디와 비밀번호를 다시 입력해주세요.';
+    }
+    return errors;
+  };
+
   const validate = values => {
     const errors = {};
-    if (!values.email) {
-      errors.email = '아이디를 입력해주세요.';
-      return errors;
-    } else if (!values.email.includes('@')) {
-      errors.email = '아이디 형식이 맞지 않습니다.';
-      return errors;
-    } else if (!values.password) {
-      errors.password = '비밀번호를 입력해주세요.';
-      return errors;
-    } else if (values.password.length < 8 || values.password.length > 16) {
-      errors.password = '아이디와 비밀번호를 다시 입력해주세요.';
-      return errors;
-    }
-    navigate('../main');
+
+    emailValidation(values.email, errors);
+    passwordValidation(values.password, errors);
+
+    return null;
   };
 
   return (
