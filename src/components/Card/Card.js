@@ -8,8 +8,6 @@ const Card = list => {
   const navigate = useNavigate();
   const listData = list.list;
 
-  console.log(listData);
-
   const priceAfter = Number(listData.price_after).toLocaleString() + '원';
   const priceBefore = Number(listData.price_before).toLocaleString() + '원';
   const discountRate =

@@ -156,10 +156,6 @@ function Detail() {
     render,
   ]);
 
-  // console.log(totalPrice);
-  // console.log(render);
-  // console.log(orderInfo.orderList);
-
   const rerender = () => {
     render === 0 ? setRender(1) : setRender(0);
   };

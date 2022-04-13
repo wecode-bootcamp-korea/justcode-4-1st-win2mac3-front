@@ -18,9 +18,9 @@ const ListAside = props => {
         setSub2Category(data);
       });
   }, []);
-  //console.log(sub1Category);
+
   const titleType = props.title[props.type];
-  //console.log(titleType);
+
   return (
     <aside className="sub-aside">
       <p className="category1-title">{titleType}</p>

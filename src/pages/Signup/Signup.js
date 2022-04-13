@@ -37,14 +37,7 @@ function Signup() {
         email: formValues.email,
         password: formValues.password,
       }),
-    })
-      .then(res => res.json())
-      .then(res => console.log(res));
-    console.log({
-      username: formValues.username,
-      email: formValues.email,
-      password: formValues.password,
-    });
+    }).then(res => res.json());
   };
 
   const navigate = useNavigate();
