@@ -88,10 +88,11 @@ function Signup() {
       errors.username = '이름이 형식에 맞지 않습니다.';
       return errors;
     }
+    alert('회원가입 완료');
     return navigate('../login');
   };
   return (
-    <div>
+    <div className="sign-up-wrapper">
       <form className="sign-up" onSubmit={handleSubmit}>
         <span className="path">홈 &#62; 회원가입</span>
         <div className="form">

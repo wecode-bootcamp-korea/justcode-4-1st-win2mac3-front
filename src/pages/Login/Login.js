@@ -11,18 +11,14 @@ function Login() {
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
+  const [token, setToken] = useState(null);
 
   const handleChange = e => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    setFormErrors(validate(formValues));
-    setIsSubmit(true);
-    sendForm(formValues);
-  };
+  const navigate = useNavigate();
 
   const sendForm = formValues => {
     fetch('http://localhost:8000/user/login', {
@@ -38,17 +34,18 @@ function Login() {
       .then(res => res.json())
       .then(res => {
         if (res.jwt) {
-          localStorage.setItem('token', res.jwt);
+          const newToken = res.jwt;
+          setToken(newToken);
         }
       });
   };
 
-  useEffect(() => {
-    if (Object.keys(formErrors).length === 0 && isSubmit) {
-    }
-  }, [formErrors, isSubmit]);
-
-  const navigate = useNavigate();
+  const handleSubmit = e => {
+    e.preventDefault();
+    sendForm(formValues);
+    setFormErrors(validate(formValues));
+    setIsSubmit(true);
+  };
 
   const validate = values => {
     const errors = {};
@@ -62,11 +59,23 @@ function Login() {
       errors.password = '비밀번호를 입력해주세요.';
       return errors;
     } else if (values.password.length < 8 || values.password.length > 16) {
-      errors.password = '아이디와 비밀번호를 다시 입력해주세요.';
+      errors.password = '비밀번호는 8자 이상, 16자 이하입니다.';
+      return errors;
+    } else if (token === null) {
+      errors.password = '아이디 또는 비밀번호가 올바르지 않습니다.';
       return errors;
     }
-    navigate('../main');
   };
+
+  useEffect(() => {
+    if (token !== null && isSubmit === true) {
+      const errors = {};
+      errors.password = '';
+      setFormErrors(errors);
+      localStorage.setItem('token', token);
+      navigate('../main');
+    }
+  }, [isSubmit, navigate, token]);
 
   return (
     <div>
