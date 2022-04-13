@@ -65,13 +65,11 @@ function Login() {
       errors.password = '아이디 또는 비밀번호가 올바르지 않습니다.';
       return errors;
     }
+    return errors;
   };
 
   useEffect(() => {
     if (token !== null && isSubmit === true) {
-      const errors = {};
-      errors.password = '';
-      setFormErrors(errors);
       localStorage.setItem('token', token);
       navigate('../main');
     }
@@ -96,7 +94,7 @@ function Login() {
           value={formValues.password}
           onChange={handleChange}
         />
-        <p className="error">{formErrors.password}</p>
+        {token === null && <p className="error">{formErrors.password}</p>}
         <div className="save-id">
           <input id="save" type="radio" name="login" />
           <label htmlFor="save">아이디저장</label>

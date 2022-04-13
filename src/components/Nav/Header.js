@@ -1,11 +1,9 @@
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 const Header = () => {
-  const [logInState, setLogInState] = useState(false);
-
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
@@ -13,22 +11,9 @@ const Header = () => {
         headers: {
           Authorization: token,
         },
-      })
-        .then(res => res.json())
-        .then(res => {
-          loginHandler();
-        });
+      }).then(res => res.json());
     }
-  }, [logInState]);
-
-  const loginHandler = () => {
-    setLogInState(true);
-  };
-
-  const logoutHandler = () => {
-    localStorage.clear();
-    setLogInState(false);
-  };
+  }, []);
 
   return (
     <div className="header">
@@ -47,8 +32,7 @@ const Header = () => {
           <Link to="/signup">회원가입</Link>
         </li>
         <li>
-          {logInState === false && <Link to="/login">로그인</Link>}
-          {logInState === true && <span onClick={logoutHandler}>로그아웃</span>}
+          <Link to="/login">로그인</Link>
         </li>
         <li>
           <Link to="#">

@@ -77,10 +77,6 @@
   align-items: center;
   flex-basis: 300px;
   li {
-    span {
-      font-size: small;
-      color: $darkGray;
-    }
     padding: 0 10px;
     &.user-cart {
       padding: 0;

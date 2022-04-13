@@ -8,7 +8,6 @@ function Detail() {
   const [productColor, setProductColor] = useState([{}]);
   const [productSize, setProductSize] = useState([{}]);
   const [productComposition, setProductComposition] = useState([{}]);
-  const [user, setUser] = useState({});
 
   const params = useParams();
   const urlById = params.id;
@@ -16,14 +15,6 @@ function Detail() {
   const token = localStorage.getItem('token') || '';
 
   useEffect(() => {
-    fetch('http://localhost:8000/user/verify', {
-      headers: {
-        Authorization: token,
-      },
-    })
-      .then(res => res.json())
-      .then(res => setUser(res));
-
     fetch(`http://localhost:8000/products/detail/item/${urlById}`)
       .then(res => res.json())
       .then(res => setProductInfo(res));
@@ -99,7 +90,6 @@ function Detail() {
 
       orderInfo.orderList.push({
         id: orderInfo.orderList[orderInfo.orderList.length - 1].id + 1,
-        user_id: user.user_id,
         product_id: productInfo.id,
         product_name: productInfo.name,
         color_id: currentColor[0].id,
@@ -164,12 +154,11 @@ function Detail() {
     productInfo.price_after,
     productSize,
     render,
-    user.user_id,
   ]);
 
   // console.log(totalPrice);
   // console.log(render);
-  console.log(orderInfo.orderList);
+  // console.log(orderInfo.orderList);
 
   const rerender = () => {
     render === 0 ? setRender(1) : setRender(0);
@@ -203,7 +192,7 @@ function Detail() {
     fetch('http://localhost:8000/cart/write', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        Authorization: token,
       },
       body: JSON.stringify(orderInfo.orderList),
     }).then(res => res.json());
