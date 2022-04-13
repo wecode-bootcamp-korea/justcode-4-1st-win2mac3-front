@@ -12,7 +12,7 @@ const ListAside = props => {
       .then(data => {
         setSub1Category(data);
       });
-    fetch(`http://localhost:8000/products/onesublist/1`, { method: 'GET' })
+    fetch(`http://localhost:8000/products/twosublist/1`, { method: 'GET' })
       .then(res => res.json())
       .then(data => {
         setSub2Category(data);

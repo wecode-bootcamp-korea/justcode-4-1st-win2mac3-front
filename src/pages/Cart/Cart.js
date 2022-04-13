@@ -18,32 +18,20 @@ function Cart() {
       .then(res => res.json())
       .then(res => setUser(res));
 
-    fetch(`http://localhost:8000/cart/read/${user.user_id}`)
+    fetch(`http://localhost:8000/cart/${user.user_id}`)
       .then(res => res.json())
       .then(res => setOrderList(res));
   }, [token, user.user_id, render]);
 
   const deleteItem = id => {
-    fetch(`http://localhost:8000/cart/delete/${id}`).then(res => res.json);
+    fetch(`http://localhost:8000/cart/${id}`, { method: 'DELETE' }).then(
+      res => res.json
+    );
     rerender();
   };
 
-  const quantityMinus = (id, quantity) => {
-    fetch('http://localhost:8000/cart/quantityminus', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        id: id,
-        quantity: quantity,
-      }),
-    }).then(res => res.json);
-    rerender();
-  };
-
-  const quantityPlus = (id, quantity) => {
-    fetch('http://localhost:8000/cart/quantityplus', {
+  const updateQuantity = (id, quantity) => {
+    fetch('http://localhost:8000/cart/update', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -97,8 +85,7 @@ function Cart() {
                       key={order.id}
                       order={order}
                       deleteItem={deleteItem}
-                      quantityMinus={quantityMinus}
-                      quantityPlus={quantityPlus}
+                      updateQuantity={updateQuantity}
                     />
                   ))}
                 </tbody>

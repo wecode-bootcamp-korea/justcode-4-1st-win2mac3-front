@@ -13,13 +13,13 @@ const ListContent = props => {
           setProducts(data);
         });
     } else if (props.type === 'best') {
-      fetch('http://localhost:8000/products/allbestsell', { method: 'GET' })
+      fetch('http://localhost:8000/products/allbestlist', { method: 'GET' })
         .then(res => res.json())
         .then(data => {
           setProducts(data);
         });
     } else if (props.type === 'new') {
-      fetch('http://localhost:8000/products/allnewsell', { method: 'GET' })
+      fetch('http://localhost:8000/products/allnewlist', { method: 'GET' })
         .then(res => res.json())
         .then(data => {
           setProducts(data);

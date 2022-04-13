@@ -185,9 +185,10 @@ function Detail() {
   };
 
   const sendOrderForm = () => {
-    fetch('http://localhost:8000/cart/write', {
+    fetch('http://localhost:8000/cart/create', {
       method: 'POST',
       headers: {
+        'Content-Type': 'application/json',
         Authorization: token,
       },
       body: JSON.stringify(orderInfo.orderList),

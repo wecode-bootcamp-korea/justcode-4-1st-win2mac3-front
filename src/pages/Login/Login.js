@@ -43,55 +43,39 @@ function Login() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    sendForm(formValues);
     setFormErrors(validate(formValues));
-    setIsSubmit(true);
   };
-
-  const emailValidation = (email, errors) => {
-    if (!email) {
-      errors.email = '아이디를 입력해주세요.';
-    } else if (!email.includes('@')) {
-      errors.email = '아이디 형식이 맞지 않습니다.';
-    }
-    return errors;
-  };
-
-  const passwordValidation = (password, errors) => {
-    if (!password) {
-      errors.password = '비밀번호를 입력해주세요.';
-    } else if (password.length < 8 || password.length > 16) {
-      errors.password = '비밀번호는 8자 이상, 16자 이하입니다.';
-    } else if (token === null) {
-      errors.password = '아이디 또는 비밀번호가 올바르지 않습니다.';
-    }
-    return errors;
-  };
-  
-  const tokenValidation = (token, errors) => {
-    if (token === null) {
-      errors.password = '아이디 또는 비밀번호가 올바르지 않습니다.';
-    }
-    return errors;
-  }
 
   const validate = values => {
     const errors = {};
 
-    emailValidation(values.email, errors);
-    passwordValidation(values.password, errors);
-    tokenValidation(token, errors);
-
-    return null;
-
+    if (!values.email) {
+      errors.email = '아이디를 입력해주세요.';
+      return errors;
+    } else if (!values.email.includes('@')) {
+      errors.email = '아이디 형식이 맞지 않습니다.';
+      return errors;
+    } else if (!values.password) {
+      errors.password = '비밀번호를 입력해주세요.';
+      return errors;
+    } else if (values.password.length < 8 || values.password.length > 16) {
+      errors.password = '비밀번호는 8자 이상, 16자 이하입니다.';
+      return errors;
+    }
+    setIsSubmit(true);
+    sendForm(formValues);
+    errors.email = '';
+    errors.password = '';
+    return errors;
   };
 
   useEffect(() => {
     if (token !== null && isSubmit === true) {
+      alert('로그인 성공');
       localStorage.setItem('token', token);
       navigate('../main');
     }
-  }, [isSubmit, navigate, token]);
+  }, [navigate, token, isSubmit]);
 
   return (
     <div>
