@@ -23,8 +23,6 @@ function Cart() {
       .then(res => setOrderList(res));
   }, [token, user.user_id, render]);
 
-  console.log(orderList);
-
   const deleteItem = id => {
     fetch(`http://localhost:8000/cart/delete/${id}`).then(res => res.json);
     rerender();

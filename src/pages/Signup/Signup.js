@@ -22,7 +22,8 @@ function Signup() {
     e.preventDefault();
     const errors = validate(formValues);
     if (!errors) {
-      navigate('/main');
+      alert('회원가입 완료');
+      navigate('../login');
       return;
     }
     setFormErrors(errors);
@@ -41,14 +42,7 @@ function Signup() {
         email: formValues.email,
         password: formValues.password,
       }),
-    })
-      .then(res => res.json())
-      .then(res => console.log(res));
-    console.log({
-      username: formValues.username,
-      email: formValues.email,
-      password: formValues.password,
-    });
+    }).then(res => res.json());
   };
 
   const navigate = useNavigate();
@@ -107,8 +101,9 @@ function Signup() {
 
     return null;
   };
+  
   return (
-    <div>
+    <div className="sign-up-wrapper">
       <form className="sign-up" onSubmit={handleSubmit}>
         <span className="path">홈 &#62; 회원가입</span>
         <div className="form">

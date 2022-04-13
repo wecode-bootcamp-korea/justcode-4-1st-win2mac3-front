@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import './Detail.scss';
 import OrderSummary from './OrderSummary';
 
@@ -8,7 +8,6 @@ function Detail() {
   const [productColor, setProductColor] = useState([{}]);
   const [productSize, setProductSize] = useState([{}]);
   const [productComposition, setProductComposition] = useState([{}]);
-  const [user, setUser] = useState({});
 
   const params = useParams();
   const urlById = params.id;
@@ -16,14 +15,6 @@ function Detail() {
   const token = localStorage.getItem('token') || '';
 
   useEffect(() => {
-    fetch('http://localhost:8000/user/verify', {
-      headers: {
-        Authorization: token,
-      },
-    })
-      .then(res => res.json())
-      .then(res => setUser(res));
-
     fetch(`http://localhost:8000/products/detail/item/${urlById}`)
       .then(res => res.json())
       .then(res => setProductInfo(res));
@@ -93,9 +84,12 @@ function Detail() {
 
   useEffect(() => {
     if (orderSummary) {
+      if (orderInfo.orderList.length === 0) {
+        orderInfo.orderList.push({ id: 0, price: 0, quantity: 0 });
+      }
+
       orderInfo.orderList.push({
         id: orderInfo.orderList[orderInfo.orderList.length - 1].id + 1,
-        user_id: user.user_id,
         product_id: productInfo.id,
         product_name: productInfo.name,
         color_id: currentColor[0].id,
@@ -110,9 +104,11 @@ function Detail() {
           currentComposition[0].price_add,
         quantity: 1,
       });
+
       if (orderInfo.orderList[0].id === 0) {
         orderInfo.orderList.shift();
       }
+
       setOrderInfo({
         orderList: orderInfo.orderList,
       });
@@ -158,12 +154,7 @@ function Detail() {
     productInfo.price_after,
     productSize,
     render,
-    user.user_id,
   ]);
-
-  // console.log(totalPrice);
-  // console.log(render);
-  console.log(orderInfo.orderList);
 
   const rerender = () => {
     render === 0 ? setRender(1) : setRender(0);
@@ -174,14 +165,34 @@ function Detail() {
     setOrderInfo({ orderList: newOrder });
   };
 
+  const navigate = useNavigate();
+
+  const goToCart = () => {
+    if (orderInfo.orderList.length === 0) {
+      alert('옵션을 선택해주세요.');
+    }
+    if (orderInfo.orderList[0].id !== 0) {
+      if (
+        window.confirm(
+          '장바구니에 상품이 담겼습니다. 장바구니로 이동하시겠습니까?'
+        )
+      ) {
+        return navigate('../cart');
+      }
+    } else {
+      alert('옵션을 선택해주세요.');
+    }
+  };
+
   const sendOrderForm = () => {
     fetch('http://localhost:8000/cart/write', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        Authorization: token,
       },
       body: JSON.stringify(orderInfo.orderList),
     }).then(res => res.json());
+    goToCart();
   };
 
   return (

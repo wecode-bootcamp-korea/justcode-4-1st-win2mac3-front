@@ -11,23 +11,15 @@ function Login() {
 
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
+  const [isSubmit, setIsSubmit] = useState(false);
+  const [token, setToken] = useState(null);
 
   const handleChange = e => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    const errors = validate(formValues);
-    if (!errors) {
-      navigate('/main');
-      return;
-    }
-    setFormErrors(errors);
-    // setIsSubmit(true);
-    sendForm(formValues);
-  };
+  const navigate = useNavigate();
 
   const sendForm = formValues => {
     fetch('http://localhost:8000/user/login', {
@@ -43,18 +35,18 @@ function Login() {
       .then(res => res.json())
       .then(res => {
         if (res.jwt) {
-          localStorage.setItem('token', res.jwt);
+          const newToken = res.jwt;
+          setToken(newToken);
         }
       });
   };
 
-  // useEffect(() => {
-  //   if (Object.keys(formErrors).length === 0 && isSubmit) {
-  //   }
-  //   setFormErrors(errors);
-  // })
-
-  const navigate = useNavigate();
+  const handleSubmit = e => {
+    e.preventDefault();
+    sendForm(formValues);
+    setFormErrors(validate(formValues));
+    setIsSubmit(true);
+  };
 
   const emailValidation = (email, errors) => {
     if (!email) {
@@ -69,19 +61,37 @@ function Login() {
     if (!password) {
       errors.password = '비밀번호를 입력해주세요.';
     } else if (password.length < 8 || password.length > 16) {
-      errors.password = '아이디와 비밀번호를 다시 입력해주세요.';
+      errors.password = '비밀번호는 8자 이상, 16자 이하입니다.';
+    } else if (token === null) {
+      errors.password = '아이디 또는 비밀번호가 올바르지 않습니다.';
     }
     return errors;
   };
+  
+  const tokenValidation = (token, errors) => {
+    if (token === null) {
+      errors.password = '아이디 또는 비밀번호가 올바르지 않습니다.';
+    }
+    return errors;
+  }
 
   const validate = values => {
     const errors = {};
 
     emailValidation(values.email, errors);
     passwordValidation(values.password, errors);
+    tokenValidation(token, errors);
 
     return null;
+
   };
+
+  useEffect(() => {
+    if (token !== null && isSubmit === true) {
+      localStorage.setItem('token', token);
+      navigate('../main');
+    }
+  }, [isSubmit, navigate, token]);
 
   return (
     <div>
@@ -102,7 +112,7 @@ function Login() {
           value={formValues.password}
           onChange={handleChange}
         />
-        <p className="error">{formErrors.password}</p>
+        {token === null && <p className="error">{formErrors.password}</p>}
         <div className="save-id">
           <input id="save" type="radio" name="login" />
           <label htmlFor="save">아이디저장</label>

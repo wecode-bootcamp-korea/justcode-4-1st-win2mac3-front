@@ -1,8 +1,20 @@
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
+import { useEffect } from 'react';
 
 const Header = () => {
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      fetch('http://localhost:8000/user/verify', {
+        headers: {
+          Authorization: token,
+        },
+      }).then(res => res.json());
+    }
+  }, []);
+
   return (
     <div className="header">
       <p className="header-logo">
