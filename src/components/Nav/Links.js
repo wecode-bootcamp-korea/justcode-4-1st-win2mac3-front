@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { BASE_URL } from '../../config';
 
 function MenuLink({ list }) {
   return (
@@ -12,7 +13,7 @@ function MenuLink({ list }) {
 function ProductLink({ list }) {
   const [sub2Category, setSub2Category] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:3000/data/sub2CategoryData.json')
+    fetch(`${BASE_URL}:3000/data/sub2CategoryData.json`)
       .then(res => res.json())
       .then(data => {
         setSub2Category(data);

@@ -2,6 +2,7 @@ import React from 'react';
 import './Signup.scss';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { BASE_URL } from '../../config';
 
 function Signup() {
   const initialValues = {
@@ -32,7 +33,7 @@ function Signup() {
   const navigate = useNavigate();
 
   const sendForm = formValues => {
-    fetch('http://localhost:8000/user/signup', {
+    fetch(`${BASE_URL}:8000/user/signup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

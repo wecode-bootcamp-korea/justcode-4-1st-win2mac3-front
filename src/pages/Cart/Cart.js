@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Cart.scss';
 import CartCard from './CartCard';
+import { BASE_URL } from '../../config';
 
 function Cart() {
   const [orderList, setOrderList] = useState([]);
@@ -10,7 +11,7 @@ function Cart() {
   const [render, setRender] = useState(0);
 
   useEffect(() => {
-    fetch('http://localhost:8000/user/verify', {
+    fetch(`${BASE_URL}:8000/user/verify`, {
       headers: {
         Authorization: token,
       },
@@ -18,20 +19,20 @@ function Cart() {
       .then(res => res.json())
       .then(res => setUser(res));
 
-    fetch(`http://localhost:8000/cart/${user.user_id}`)
+    fetch(`${BASE_URL}:8000/cart/${user.user_id}`)
       .then(res => res.json())
       .then(res => setOrderList(res));
   }, [token, user.user_id, render]);
 
   const deleteItem = id => {
-    fetch(`http://localhost:8000/cart/${id}`, { method: 'DELETE' }).then(
+    fetch(`${BASE_URL}:8000/cart/${id}`, { method: 'DELETE' }).then(
       res => res.json
     );
     rerender();
   };
 
   const updateQuantity = (id, quantity) => {
-    fetch('http://localhost:8000/cart/update', {
+    fetch(`${BASE_URL}:8000/cart/update`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

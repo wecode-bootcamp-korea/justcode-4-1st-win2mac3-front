@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { MenuLink, ProductLink } from './Links.js';
+import { BASE_URL } from '../../config';
 
 const NavDepth2 = show => {
   const [pageCategory, setPageCategory] = useState([]);
@@ -7,12 +8,12 @@ const NavDepth2 = show => {
   const [number, setNumber] = useState(1);
 
   useEffect(() => {
-    fetch('http://localhost:3000/data/pageCategoryData.json', { method: 'GET' })
+    fetch(`${BASE_URL}:3000/data/pageCategoryData.json`, { method: 'GET' })
       .then(res => res.json())
       .then(data => {
         setPageCategory(data);
       });
-    fetch('http://localhost:3000/data/sub1CategoryData.json', {
+    fetch(`${BASE_URL}:3000/data/sub1CategoryData.json`, {
       method: 'GET',
     })
       .then(res => res.json())

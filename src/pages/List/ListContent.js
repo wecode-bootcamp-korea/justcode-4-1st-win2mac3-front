@@ -2,24 +2,25 @@ import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { Card } from '../../components/Card/Card';
+import { BASE_URL } from '../../config';
 
 const ListContent = props => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
     if (props.type === 'bed') {
-      fetch('http://localhost:8000/products/alllist', { method: 'GET' })
+      fetch(`${BASE_URL}:8000/products/alllist`, { method: 'GET' })
         .then(res => res.json())
         .then(data => {
           setProducts(data);
         });
     } else if (props.type === 'best') {
-      fetch('http://localhost:8000/products/allbestlist', { method: 'GET' })
+      fetch(`${BASE_URL}:8000/products/allbestlist`, { method: 'GET' })
         .then(res => res.json())
         .then(data => {
           setProducts(data);
         });
     } else if (props.type === 'new') {
-      fetch('http://localhost:8000/products/allnewlist', { method: 'GET' })
+      fetch(`${BASE_URL}:8000/products/allnewlist`, { method: 'GET' })
         .then(res => res.json())
         .then(data => {
           setProducts(data);

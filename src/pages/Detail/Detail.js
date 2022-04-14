@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './Detail.scss';
 import OrderSummary from './OrderSummary';
+import { BASE_URL } from '../../config';
 
 function Detail() {
   const [productInfo, setProductInfo] = useState({});
@@ -15,16 +16,16 @@ function Detail() {
   const token = localStorage.getItem('token') || '';
 
   useEffect(() => {
-    fetch(`http://localhost:8000/products/detail/item/${urlById}`)
+    fetch(`${BASE_URL}:8000/products/detail/item/${urlById}`)
       .then(res => res.json())
       .then(res => setProductInfo(res));
-    fetch('http://localhost:8000/products/detail/colors')
+    fetch(`${BASE_URL}:8000/products/detail/colors`)
       .then(res => res.json())
       .then(res => setProductColor(res));
-    fetch('http://localhost:8000/products/detail/sizes')
+    fetch(`${BASE_URL}:8000/products/detail/sizes`)
       .then(res => res.json())
       .then(res => setProductSize(res));
-    fetch('http://localhost:8000/products/detail/compositions')
+    fetch(`${BASE_URL}:8000/products/detail/compositions`)
       .then(res => res.json())
       .then(res => setProductComposition(res));
   }, [token, urlById]);
@@ -185,7 +186,7 @@ function Detail() {
   };
 
   const sendOrderForm = () => {
-    fetch('http://localhost:8000/cart/create', {
+    fetch(`${BASE_URL}:8000/cart/create`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
