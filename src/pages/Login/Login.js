@@ -2,6 +2,7 @@ import React from 'react';
 import './Login.scss';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { BASE_URL } from '../../config';
 
 function Login() {
   const initialValues = {
@@ -22,7 +23,7 @@ function Login() {
   const navigate = useNavigate();
 
   const sendForm = formValues => {
-    fetch('http://localhost:8000/user/login', {
+    fetch(`${BASE_URL}:8000/user/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

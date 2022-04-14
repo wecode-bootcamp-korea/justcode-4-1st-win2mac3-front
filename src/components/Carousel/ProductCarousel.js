@@ -3,6 +3,7 @@ import { Card } from '../Card/Card';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import './Carousel.scss';
+import { BASE_URL } from '../../config';
 
 const ProductCarousel = () => {
   const [products, setProducts] = useState([]);
@@ -11,7 +12,7 @@ const ProductCarousel = () => {
   const carouselInner = useRef();
 
   useEffect(() => {
-    fetch(`http://localhost:8000/products/alllist`, { method: 'GET' })
+    fetch(`${BASE_URL}:8000/products/alllist`, { method: 'GET' })
       .then(res => res.json())
       .then(data => {
         setProducts(data);
