@@ -1,17 +1,17 @@
 import React from 'react';
 import './CartCard.scss';
 
-function CartCard({ order, deleteItem, quantityMinus, quantityPlus }) {
+function CartCard({ order, deleteItem, updateQuantity }) {
   const clickDeleteHandler = () => {
     deleteItem(order.id);
   };
   const clickMinusHandler = () => {
     const newQauntity = order.quantity > 1 ? order.quantity - 1 : 1;
-    quantityMinus(order.id, newQauntity);
+    updateQuantity(order.id, newQauntity);
   };
   const clickPlusHandler = () => {
     const newQauntity = order.quantity < 5 ? order.quantity + 1 : 5;
-    quantityPlus(order.id, newQauntity);
+    updateQuantity(order.id, newQauntity);
   };
 
   return (
