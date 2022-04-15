@@ -2,12 +2,13 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 import { useEffect } from 'react';
+import { BASE_URL } from '../../config';
 
 const Header = () => {
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
-      fetch('http://localhost:8000/user/verify', {
+      fetch(`${BASE_URL}:8000/user/verify`, {
         headers: {
           Authorization: token,
         },
