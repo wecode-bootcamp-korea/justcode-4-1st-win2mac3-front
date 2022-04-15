@@ -1,2 +1,46 @@
-@use "../../styles/common.scss";
-@import "../../styles/variables.scss";
+@use '../../styles/common.scss';
+@import '../../styles/variables.scss';
+
+.mainBody {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .mainContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 120px;
+    .carouselBanner {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 100px;
+    }
+    .secondBanner {
+      width: 1900px;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 200px;
+      .second-title {
+        padding: 20px 0 10px;
+        font-size: $h3;
+        font-weight: $medium;
+      }
+      .second-desc {
+        font-size: $h4;
+        color: $darkGray;
+      }
+    }
+    .thirdBanner {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      .thirdBannerTitle {
+        font-size: $h2;
+        font-weight: $medium;
+        letter-spacing: 10px;
+        padding-bottom: 40px;
+      }
+    }
+  }
+}

@@ -1,2 +1,143 @@
-@use "../../styles/common.scss";
-@import "../../styles/variables.scss";
+@use '../../styles/common.scss';
+@import '../../styles/variables.scss';
+
+.nav-disable {
+  display: none;
+}
+
+.nav-wrap {
+  position: relative;
+  border-bottom: 1px solid $lightGray;
+  .nav {
+    display: flex;
+    padding: 0px 0 20px;
+
+    justify-content: space-between;
+    align-items: flex-end;
+    .nav-depth1 {
+      .menu-bar {
+        font-size: $h2;
+      }
+      li {
+        display: inline-block;
+        margin: 0 30px;
+        font-size: $h5;
+
+        &:first-child {
+          margin-left: 0;
+          cursor: pointer;
+        }
+        &.nav-category {
+          svg {
+            transform: translateY(5px);
+          }
+          span {
+            margin: 0 0 0 10px;
+          }
+        }
+      }
+    }
+  }
+  .search-section {
+    display: flex;
+    align-items: center;
+    padding: 5px 0px 3px 10px;
+    border-bottom: 1px solid $black;
+    .search-input {
+      margin-right: 10px;
+      font-size: $h5;
+      border: none;
+      outline: none;
+    }
+    .search-btn {
+      background: $white;
+      font-size: $h3;
+      border: none;
+      cursor: pointer;
+    }
+  }
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+  .header-logo {
+    width: 252px;
+    height: 38px;
+    a {
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+.user-service {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-basis: 300px;
+  li {
+    padding: 0 10px;
+    &.user-cart {
+      padding: 0;
+    }
+    &.user-cart,
+    &.user-cart + li {
+      a {
+        &:after {
+          display: none;
+        }
+      }
+    }
+    a {
+      position: relative;
+
+      font-size: $small;
+      color: $darkGray;
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 1px;
+        height: 10px;
+        top: 5px;
+        left: -18px;
+        background: $darkGray;
+      }
+    }
+    &.user-cart {
+      a {
+        font-size: $h3;
+        color: $black;
+      }
+    }
+  }
+}
+
+.nav-depth2 {
+  position: absolute;
+  width: 100%;
+  padding: 20px 0;
+  background: rgba(255, 255, 255, 0.9);
+  z-index: 10;
+  .content-wrap {
+    display: flex;
+  }
+  .nav-depth3 {
+    flex-basis: 190px;
+    li,
+    .sub1-category {
+      font-size: $h5;
+      font-weight: $medium;
+      margin: 15px 0;
+    }
+    .sub2-category {
+      font-size: $small;
+      font-weight: $light;
+      margin: 15px 0;
+    }
+    a {
+      text-transform: uppercase;
+    }
+  }
+}

@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "드리밍 고밀도 60수 바이오워싱 차렵이불",
+    "price_before": 115000,
+    "price_after": 79900,
+    "image_url": "image1"
+  },
+  {
+    "id": 2,
+    "name": "드리밍 블루벨 플라워 차렵이불 ",
+    "price_before": 155000,
+    "price_after": 109900,
+    "image_url": "image2"
+  },
+  {
+    "id": 3,
+    "name": "로지 바이올렛 플라워 차렵이불",
+    "price_before": 205000,
+    "price_after": 109900,
+    "image_url": "image3"
+  },
+  {
+    "id": 4,
+    "name": "코티지 블루플라워 차렵이불",
+    "price_before": 110000,
+    "price_after": 69900,
+    "image_url": "image4"
+  },
+  {
+    "id": 5,
+    "name": "스윗 멀티 체크 슬림차렵이불[그린]",
+    "price_before": 104000,
+    "price_after": 69900,
+    "image_url": "image5"
+  },
+  {
+    "id": 6,
+    "name": "코티지 옐로우플라워 차렵이불",
+    "price_before": 90000,
+    "price_after": 58900,
+    "image_url": "image6"
+  },
+  {
+    "id": 7,
+    "name": "소프트니스 모달100% 무봉제 차렵이불[옐로우]",
+    "price_before": 120000,
+    "price_after": 84900,
+    "image_url": "image7"
+  },
+  {
+    "id": 8,
+    "name": "컴포트 올리브리프 차렵이불",
+    "price_before": 89000,
+    "price_after": 59900,
+    "image_url": "image8"
+  }
+]

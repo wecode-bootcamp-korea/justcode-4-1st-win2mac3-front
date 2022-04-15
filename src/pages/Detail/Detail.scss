@@ -1,2 +1,188 @@
-@use "../../styles/common.scss";
-@import "../../styles/variables.scss";
+@use '../../styles/common.scss';
+@import '../../styles/variables.scss';
+
+.detailBody {
+  display: flex;
+  justify-content: center;
+  .detailWrapper {
+    width: 1200px;
+    margin: 40px;
+    .homeToWhere {
+      font-size: 14px;
+      color: gray;
+      margin: 30px 0px 50px 0px;
+    }
+    .detailContainer {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      padding-bottom: 50px;
+      border-bottom: 1px solid #c5c5c5;
+      .imageSection {
+        width: 100%;
+        height: 100%;
+        margin: 0px 50px 50px 0px;
+        display: flex;
+        justify-content: center;
+        img {
+          width: 100%;
+        }
+      }
+      .wordSection {
+        width: 100%;
+        .itemName {
+          h2 {
+            font-size: 24px;
+            font-weight: 200;
+            margin-bottom: 5px;
+          }
+          .recommendIcon {
+            background-color: rgb(1, 73, 55);
+            color: white;
+            font-size: 12px;
+            padding: 3px 5px;
+          }
+          margin-bottom: 30px;
+        }
+        .priceSection {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding-bottom: 20px;
+          margin-bottom: 5px;
+          border-bottom: 1px solid #c5c5c5;
+          div {
+            display: flex;
+            align-items: center;
+            .afterDiscount {
+              font-size: 28px;
+              font-weight: 700;
+            }
+            .beforeDiscount {
+              font-size: 24px;
+              font-weight: 200;
+              color: #c5c5c5;
+              padding: 10px;
+              text-decoration: line-through;
+            }
+          }
+          .discountRate {
+            font-size: 28px;
+            font-weight: 200;
+            color: rgb(226, 0, 0);
+          }
+        }
+        .itemOption {
+          table {
+            width: 100%;
+            height: 400px;
+            font-size: 16px;
+            vertical-align: middle;
+            margin-bottom: 30px;
+            tbody {
+              tr {
+                border-bottom: 1px solid #c5c5c5;
+                .itemDescription {
+                  vertical-align: middle;
+                  font-size: 16px;
+                  color: #c5c5c5;
+                  line-height: 24px;
+                  padding-bottom: 5px;
+                }
+                .firstColumn {
+                  width: 25%;
+                  vertical-align: middle;
+                }
+              }
+              td {
+                vertical-align: middle;
+                select {
+                  width: 100%;
+                  padding: 10px 15px;
+                  border: 1px solid #c5c5c5;
+                  border-radius: 0;
+                  color: #c5c5c5;
+                  font-size: 14px;
+                  font-family: Pretendard, -apple-system, BlinkMacSystemFont,
+                    system-ui, Roboto, 'Helvetica Neue', 'Segoe UI',
+                    'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic',
+                    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+                    sans-serif;
+                }
+              }
+            }
+          }
+        }
+        .totalPrice {
+          display: flex;
+          justify-content: flex-end;
+          align-items: flex-end;
+          padding: 50px 0px 10px 0px;
+          .total {
+            font-size: 18px;
+            font-weight: 400;
+            margin-right: 15px;
+            padding-bottom: 2px;
+          }
+          .price {
+            font-size: 30px;
+            font-weight: 700;
+            margin-right: 5px;
+          }
+          .amount {
+            font-size: 14px;
+            padding-bottom: 2px;
+          }
+        }
+        .buyBtnSection {
+          .buyBtn {
+            width: 100%;
+            height: 50px;
+            border: 0px;
+            background-color: rgb(1, 73, 55);
+            font-size: 20px;
+            font-weight: 600;
+            color: white;
+            margin: 12px 0px;
+            padding: 0px;
+            padding-top: 2px; //글자 위치 조정
+            cursor: pointer;
+          }
+          div {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            .cartBtn {
+              width: 50%;
+              height: 50px;
+              border: 1px solid black;
+              background-color: white;
+              font-size: 20px;
+              font-weight: 100;
+              color: black;
+              margin-right: 12px;
+              padding: 0px;
+              padding-top: 2px; //글자 위치 조정
+              cursor: pointer;
+            }
+            .keepBtn {
+              width: 50%;
+              height: 50px;
+              border: 1px solid black;
+              background-color: white;
+              font-size: 20px;
+              font-weight: 100;
+              color: black;
+              padding: 0px;
+              padding-top: 2px; //글자 위치 조정
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// @media (max-width: 800px) {
